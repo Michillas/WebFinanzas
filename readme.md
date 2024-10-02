@@ -1,0 +1,1 @@
+Aplicación Web de finanzas y criptomonedas con el uso inteligencia artificial a través de APIs, proyecto final del ciclo formativo de Grado Superior en DAW, realizado durante el año academico 2024/25.
