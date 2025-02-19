@@ -20,10 +20,12 @@ import java.util.List;
 @Table(name="user", uniqueConstraints={@UniqueConstraint(columnNames = {"username"})})
 public class User implements UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+    @Basic
     @Column(nullable = false)
     String username;
+    @Column(nullable = false)
     String lastname;
     String firstname;
     String country;
