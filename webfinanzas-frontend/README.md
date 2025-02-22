@@ -1,50 +1,56 @@
-# React + TypeScript + Vite
+# Shadcn Landing Page Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## <a href="https://ui.shadcn.com/" target="_blank">Shadcn</a> + <a href="https://nextjs.org/" target="_blank">Next.js</a> + <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> + <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>.
 
-Currently, two official plugins are available:
+### This is a project conversion <a href="https://github.com/leoMirandaa/shadcn-vue-landing-page" target="_blank">Shadcn-Vue</a> to NextJS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Alt text](./public/demo-img.jpg)
 
-## Expanding the ESLint configuration
+## Sections
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [x] Navbar
+- [x] Sidebar(mobile)
+- [x] Hero
+- [x] Sponsors
+- [x] Benefits
+- [x] Features
+- [x] Testimonials
+- [x] Team
+- [x] Community
+- [x] Contact
+- [x] Pricing
+- [x] Frequently Asked Questions(FAQ)
+- [x] Services
+- [x] Footer
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- [x] Fully Responsive Design
+- [x] User Friendly Navigation
+- [x] Dark Mode
+
+## How to install
+
+1. Clone this repositoy:
+
+```bash
+git clone https://github.com/nobruf/shadcn-landing-page.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Go into project
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+cd shadcn-landing-page
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+3. Install dependencies
+
+```bash
+npm install
+```
+
+4. Run project
+
+```bash
+npm run dev
 ```
