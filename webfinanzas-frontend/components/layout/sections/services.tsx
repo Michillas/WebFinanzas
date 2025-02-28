@@ -17,25 +17,25 @@ interface ServiceProps {
 }
 const serviceList: ServiceProps[] = [
   {
-    title: "Custom Domain Integration",
+    title: "Integración de Dominio Personalizado",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit adipisicing.",
+      "Obtén un dominio personalizado para tu sitio web y mejora tu presencia en línea.",
     pro: 0,
   },
   {
-    title: "Social Media Integrations",
+    title: "Integraciones con Redes Sociales",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae, dicta.",
+      "Conecta tus cuentas de redes sociales para una gestión más eficiente de tu marca.",
     pro: 0,
   },
   {
-    title: "Email Marketing Integrations",
-    description: "Lorem dolor sit amet adipisicing.",
+    title: "Integraciones de Marketing por Correo Electrónico",
+    description: "Automatiza tus campañas de correo electrónico y llega a más clientes.",
     pro: 0,
   },
   {
-    title: "SEO Optimization",
-    description: "Lorem ipsum dolor sit amet consectetur.",
+    title: "Optimización SEO",
+    description: "Mejora el posicionamiento de tu sitio web en los motores de búsqueda.",
     pro: 1,
   },
 ];
@@ -44,15 +44,15 @@ export const ServicesSection = () => {
   return (
     <section id="services" className="container py-24 sm:py-32">
       <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-        Services
+        Servicios
       </h2>
 
       <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-        Grow Your Business
+        Haz Crecer Tu Negocio
       </h2>
       <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground mb-8">
-        From marketing and sales to operations and strategy, we have the
-        expertise to help you achieve your goals.
+        Desde marketing y ventas hasta operaciones y estrategia, tenemos la
+        experiencia para ayudarte a alcanzar tus objetivos.
       </h3>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
 

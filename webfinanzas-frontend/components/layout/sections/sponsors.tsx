@@ -12,31 +12,31 @@ interface sponsorsProps {
 const sponsors: sponsorsProps[] = [
   {
     icon: "Crown",
-    name: "Acmebrand",
+    name: "FinCorp",
   },
   {
     icon: "Vegan",
-    name: "Acmelogo",
+    name: "InvestMate",
   },
   {
     icon: "Ghost",
-    name: "Acmesponsor",
+    name: "WealthWave",
   },
   {
     icon: "Puzzle",
-    name: "Acmeipsum",
+    name: "MoneyMasters",
   },
   {
     icon: "Squirrel",
-    name: "Acme",
+    name: "CapitalCrew",
   },
   {
     icon: "Cookie",
-    name: "Accmee",
+    name: "FinanceFlow",
   },
   {
     icon: "Drama",
-    name: "Acmetech",
+    name: "ProfitPros",
   },
 ];
 

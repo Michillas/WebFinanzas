@@ -19,22 +19,22 @@ export const CommunitySection = () => {
               <CardTitle className="text-4xl md:text-5xl font-bold flex flex-col items-center">
                 <DiscordIcon />
                 <div>
-                  Ready to join this
-                  <span className="text-transparent pl-2 bg-gradient-to-r from-[#D247BF] to-primary bg-clip-text">
-                    Community?
+                  Únete a nuestra
+                  <span className="text-transparent pl-2 bg-gradient-to-r from-[#c2ff94] to-primary bg-clip-text">
+                    Comunidad
                   </span>
                 </div>
               </CardTitle>
             </CardHeader>
             <CardContent className="lg:w-[80%] text-xl text-muted-foreground">
-              Join our vibrant Discord community! Connect, share, and grow with
-              like-minded enthusiasts. Click to dive in! 🚀
+              ¡Nuestra increible comunidad de Discord! Conecta, comparte, y
+              crece con mentes increibles. ¡Clic para unirte! 🚀
             </CardContent>
 
             <CardFooter>
               <Button asChild>
                 <a href="https://discord.com/" target="_blank">
-                  Join Discord
+                  Unirse
                 </a>
               </Button>
             </CardFooter>

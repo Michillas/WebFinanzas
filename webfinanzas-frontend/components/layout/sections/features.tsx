@@ -11,39 +11,39 @@ interface FeaturesProps {
 const featureList: FeaturesProps[] = [
   {
     icon: "TabletSmartphone",
-    title: "Mobile Friendly",
+    title: "Amigable para Móviles",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, consectetur.",
+      "Accede a tus finanzas desde cualquier lugar con nuestra aplicación móvil intuitiva y fácil de usar.",
   },
   {
     icon: "BadgeCheck",
-    title: "Social Proof",
+    title: "Seguridad Garantizada",
     description:
-      "Lorem ipsum dolor sit amet consectetur. Natus consectetur, odio ea accusamus aperiam.",
+      "Tus datos están protegidos con los más altos estándares de seguridad y encriptación.",
   },
   {
     icon: "Goal",
-    title: "Targeted Content",
+    title: "Objetivos Financieros",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. odio ea accusamus aperiam.",
+      "Establece y sigue tus metas financieras para alcanzar la libertad económica que deseas.",
   },
   {
     icon: "PictureInPicture",
-    title: "Strong Visuals",
+    title: "Visualización Clara",
     description:
-      "Lorem elit. A odio velit cum aliquam. Natus consectetur dolores, odio ea accusamus aperiam.",
+      "Gráficos y reportes detallados para que puedas entender mejor tu situación financiera.",
   },
   {
     icon: "MousePointerClick",
-    title: "Clear CTA",
+    title: "Acciones Rápidas",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing. odio ea accusamus consectetur.",
+      "Realiza transferencias y pagos de manera rápida y sencilla con solo unos clics.",
   },
   {
     icon: "Newspaper",
-    title: "Clear Headline",
+    title: "Noticias Financieras",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur.",
+      "Mantente informado con las últimas noticias y tendencias del mundo financiero.",
   },
 ];
 
@@ -51,17 +51,15 @@ export const FeaturesSection = () => {
   return (
     <section id="features" className="container py-24 sm:py-32">
       <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-        Features
+        Características
       </h2>
 
       <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-        What Makes Us Different
+        Lo que nos hace diferentes
       </h2>
 
       <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground mb-8">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem
-        fugiat, odit similique quasi sint reiciendis quidem iure veritatis optio
-        facere tenetur.
+        En FireNances, nos dedicamos a proporcionarte las mejores herramientas para gestionar tus finanzas personales de manera eficiente y segura.
       </h3>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -11,27 +11,27 @@ interface BenefitsProps {
 const benefitList: BenefitsProps[] = [
   {
     icon: "Blocks",
-    title: "Build Brand Trust",
+    title: "Construir confianza en la marca",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+      "Aumenta la credibilidad de tu marca con estrategias financieras sólidas y efectivas.",
   },
   {
     icon: "LineChart",
-    title: "More Leads",
+    title: "Más clientes potenciales",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, natus consectetur.",
+      "Atrae a más clientes potenciales con nuestras herramientas de análisis financiero.",
   },
   {
     icon: "Wallet",
-    title: "Higher Conversions",
+    title: "Mayores conversiones",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus consectetur. A odio velit cum aliquam",
+      "Convierte más visitantes en clientes con nuestras soluciones de conversión optimizadas.",
   },
   {
     icon: "Sparkle",
-    title: "Test Marketing Ideas",
+    title: "Probar ideas de marketing",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+      "Experimenta con nuevas estrategias de marketing y mide su impacto financiero.",
   },
 ];
 
@@ -40,15 +40,13 @@ export const BenefitsSection = () => {
     <section id="benefits" className="container py-24 sm:py-32">
       <div className="grid lg:grid-cols-2 place-items-center lg:gap-24">
         <div>
-          <h2 className="text-lg text-primary mb-2 tracking-wider">Benefits</h2>
+          <h2 className="text-lg text-primary mb-2 tracking-wider">Beneficios</h2>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Your Shortcut to Success
+            Tu atajo al éxito financiero
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
-            ducimus reprehenderit architecto rerum similique facere odit
-            deleniti necessitatibus quo quae.
+            En FireNances, te ayudamos a alcanzar tus metas financieras con herramientas y estrategias efectivas. Descubre cómo podemos transformar tu futuro financiero.
           </p>
         </div>
 

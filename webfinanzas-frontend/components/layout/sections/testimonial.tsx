@@ -28,50 +28,50 @@ const reviewList: ReviewProps[] = [
   {
     image: "https://github.com/shadcn.png",
     name: "John Doe",
-    userName: "Product Manager",
+    userName: "Gerente de Producto",
     comment:
-      "Wow NextJs + Shadcn is awesome!. This template lets me change colors, fonts and images to match my brand identity. ",
+      "Me encanta esta aplicación para gestionar mi empresa junto con los productos que ofertamos.",
     rating: 5.0,
   },
   {
     image: "https://github.com/shadcn.png",
     name: "Sophia Collins",
-    userName: "Cybersecurity Analyst",
+    userName: "Analista de Ciberseguridad",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. ",
+      "FireNances me ha ayudado a organizar mis finanzas personales de manera eficiente y segura. ¡Altamente recomendado!",
     rating: 4.8,
   },
 
   {
     image: "https://github.com/shadcn.png",
     name: "Adam Johnson",
-    userName: "Chief Technology Officer",
+    userName: "Director de Tecnología",
     comment:
-      "Lorem ipsum dolor sit amet,exercitation. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "Gracias a FireNances, ahora tengo un control total sobre mis inversiones y gastos. La interfaz es muy intuitiva.",
     rating: 4.9,
   },
   {
     image: "https://github.com/shadcn.png",
     name: "Ethan Parker",
-    userName: "Data Scientist",
+    userName: "Científico de Datos",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "FireNances me ha permitido ahorrar más dinero al proporcionarme análisis detallados de mis hábitos de gasto.",
     rating: 5.0,
   },
   {
     image: "https://github.com/shadcn.png",
     name: "Ava Mitchell",
-    userName: "IT Project Manager",
+    userName: "Gerente de Proyectos de TI",
     comment:
-      "Lorem ipsum dolor sit amet, tempor incididunt  aliqua. Ut enim ad minim veniam, quis nostrud incididunt consectetur adipiscing elit.",
+      "La plataforma de FireNances es fácil de usar y me ha ayudado a planificar mis finanzas a largo plazo.",
     rating: 5.0,
   },
   {
     image: "https://github.com/shadcn.png",
     name: "Isabella Reed",
-    userName: "DevOps Engineer",
+    userName: "Ingeniera DevOps",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "FireNances es una herramienta esencial para cualquier persona que quiera mejorar su salud financiera.",
     rating: 4.9,
   },
 ];
@@ -81,11 +81,11 @@ export const TestimonialSection = () => {
     <section id="testimonials" className="container py-24 sm:py-32">
       <div className="text-center mb-8">
         <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-          Testimonials
+          Testimonios
         </h2>
 
         <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-          Hear What Our 1000+ Clients Say
+          Escucha lo que dicen nuestros más de 1000 clientes
         </h2>
       </div>
 

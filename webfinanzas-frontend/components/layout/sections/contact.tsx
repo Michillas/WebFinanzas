@@ -43,7 +43,7 @@ export const ContactSection = () => {
       firstName: "",
       lastName: "",
       email: "",
-      subject: "Web Development",
+      subject: "Consultoría Financiera",
       message: "",
     },
   });
@@ -52,7 +52,7 @@ export const ContactSection = () => {
     const { firstName, lastName, email, subject, message } = values;
     console.log(values);
 
-    const mailToLink = `mailto:leomirandadev@gmail.com?subject=${subject}&body=Hello I am ${firstName} ${lastName}, my Email is ${email}. %0D%0A${message}`;
+    const mailToLink = `mailto:leomirandadev@gmail.com?subject=${subject}&body=Hola, soy ${firstName} ${lastName}, mi correo es ${email}. %0D%0A${message}`;
 
     window.location.href = mailToLink;
   }
@@ -63,53 +63,52 @@ export const ContactSection = () => {
         <div>
           <div className="mb-4">
             <h2 className="text-lg text-primary mb-2 tracking-wider">
-              Contact
+              Contacto
             </h2>
 
-            <h2 className="text-3xl md:text-4xl font-bold">Connect With Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Conéctate con FireNances</h2>
           </div>
           <p className="mb-8 text-muted-foreground lg:w-5/6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-            ipsam sint enim exercitationem ex autem corrupti quas tenetur
+            En FireNances, estamos aquí para ayudarte a alcanzar tus metas financieras. No dudes en contactarnos para cualquier consulta o asistencia.
           </p>
 
           <div className="flex flex-col gap-4">
             <div>
               <div className="flex gap-2 mb-1">
                 <Building2 />
-                <div className="font-bold">Find us</div>
+                <div className="font-bold">Encuéntranos</div>
               </div>
 
-              <div>742 Evergreen Terrace, Springfield, IL 62704</div>
+              <div>Calle Ficticia 123, Ciudad Financiera, CP 45678</div>
             </div>
 
             <div>
               <div className="flex gap-2 mb-1">
                 <Phone />
-                <div className="font-bold">Call us</div>
+                <div className="font-bold">Llámanos</div>
               </div>
 
-              <div>+1 (619) 123-4567</div>
+              <div>+34 123 456 789</div>
             </div>
 
             <div>
               <div className="flex gap-2 mb-1">
                 <Mail />
-                <div className="font-bold">Mail US</div>
+                <div className="font-bold">Envíanos un correo</div>
               </div>
 
-              <div>leomirandadev@gmail.com</div>
+              <div>contacto@firenances.com</div>
             </div>
 
             <div>
               <div className="flex gap-2">
                 <Clock />
-                <div className="font-bold">Visit us</div>
+                <div className="font-bold">Visítanos</div>
               </div>
 
               <div>
-                <div>Monday - Friday</div>
-                <div>8AM - 4PM</div>
+                <div>Lunes - Viernes</div>
+                <div>9AM - 6PM</div>
               </div>
             </div>
           </div>
@@ -129,9 +128,9 @@ export const ContactSection = () => {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>First Name</FormLabel>
+                        <FormLabel>Nombre</FormLabel>
                         <FormControl>
-                          <Input placeholder="Leopoldo" {...field} />
+                          <Input placeholder="Juan" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -142,9 +141,9 @@ export const ContactSection = () => {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem className="w-full">
-                        <FormLabel>Last Name</FormLabel>
+                        <FormLabel>Apellido</FormLabel>
                         <FormControl>
-                          <Input placeholder="Miranda" {...field} />
+                          <Input placeholder="Pérez" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -158,11 +157,11 @@ export const ContactSection = () => {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>Correo Electrónico</FormLabel>
                         <FormControl>
                           <Input
                             type="email"
-                            placeholder="leomirandadev@gmail.com"
+                            placeholder="juanperez@gmail.com"
                             {...field}
                           />
                         </FormControl>
@@ -178,29 +177,31 @@ export const ContactSection = () => {
                     name="subject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Subject</FormLabel>
+                        <FormLabel>Asunto</FormLabel>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
                         >
                           <FormControl>
                             <SelectTrigger>
-                              <SelectValue placeholder="Select a subject" />
+                              <SelectValue placeholder="Selecciona un asunto" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="Web Development">
-                              Web Development
+                            <SelectItem value="Consultoría Financiera">
+                              Consultoría Financiera
                             </SelectItem>
-                            <SelectItem value="Mobile Development">
-                              Mobile Development
+                            <SelectItem value="Inversiones">
+                              Inversiones
                             </SelectItem>
-                            <SelectItem value="Figma Design">
-                              Figma Design
+                            <SelectItem value="Ahorro y Presupuesto">
+                              Ahorro y Presupuesto
                             </SelectItem>
-                            <SelectItem value="REST API">REST API</SelectItem>
-                            <SelectItem value="FullStack Project">
-                              FullStack Project
+                            <SelectItem value="Planificación de Jubilación">
+                              Planificación de Jubilación
+                            </SelectItem>
+                            <SelectItem value="Otros">
+                              Otros
                             </SelectItem>
                           </SelectContent>
                         </Select>
@@ -216,11 +217,11 @@ export const ContactSection = () => {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>Mensaje</FormLabel>
                         <FormControl>
                           <Textarea
                             rows={5}
-                            placeholder="Your message..."
+                            placeholder="Escribe tu mensaje aquí..."
                             className="resize-none"
                             {...field}
                           />
@@ -232,7 +233,7 @@ export const ContactSection = () => {
                   />
                 </div>
 
-                <Button className="mt-4">Send message</Button>
+                <Button className="mt-4">Enviar mensaje</Button>
               </form>
             </Form>
           </CardContent>

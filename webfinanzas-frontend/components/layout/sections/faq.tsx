@@ -13,32 +13,30 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free NextJS Shadcn template.",
+    question: "¿Qué es FireNances?",
+    answer: "FireNances es una aplicación innovadora para gestionar tus finanzas personales de manera eficiente y sencilla.",
     value: "item-1",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit in voluptate velit?",
+    question: "¿Cómo puedo empezar a usar FireNances?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam consectetur sapiente, iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+      "Comenzar es muy fácil. Solo necesitas registrarte con tu correo electrónico y podrás empezar a organizar tus finanzas.",
     value: "item-2",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet Consectetur natus dolor minus quibusdam?",
+    question: "¿FireNances ofrece herramientas de presupuesto?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis.",
+      "Sí, FireNances te permite crear y seguir presupuestos personalizados para ayudarte a controlar tus gastos.",
     value: "item-3",
   },
   {
-    question: "Excepteur sint occaecat cupidata non proident sunt?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    question: "¿Es seguro usar FireNances?",
+    answer: "Totalmente. Utilizamos las mejores prácticas de seguridad para proteger tu información financiera.",
     value: "item-4",
   },
   {
-    question:
-      "Enim ad minim veniam, quis nostrud exercitation ullamco laboris?",
-    answer: "consectetur adipisicing elit. Sint labore.",
+    question: "¿Puedo establecer metas financieras en FireNances?",
+    answer: "Sí, puedes establecer metas financieras y hacer un seguimiento de tu progreso fácilmente.",
     value: "item-5",
   },
 ];
@@ -52,7 +50,7 @@ export const FAQSection = () => {
         </h2>
 
         <h2 className="text-3xl md:text-4xl text-center font-bold">
-          Common Questions
+          Preguntas Frecuentes
         </h2>
       </div>
 
