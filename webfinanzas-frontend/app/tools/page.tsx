@@ -1,66 +1,66 @@
 "use client";
 
 import {
-  BarChart3,
-  Calculator,
-  LineChart,
-  PieChart,
-  TrendingUp,
-  Wallet,
+    BarChart3,
+    Calculator,
+    Wallet,
+    Cpu,
+    Bitcoin,
+    Briefcase,
 } from "lucide-react";
 import Link from "next/link";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
 } from "@/components/ui/card";
 import type { ReactNode } from "react";
 
 const financeTools = [
-  {
-    id: 1,
-    title: "Stock Charts",
-    description: "Visualize stock performance and trends",
-    icon: <LineChart className="h-10 w-10" />,
-    href: "/tools/stocks",
-  },
-  {
-    id: 2,
-    title: "Financial Calculator",
-    description: "Calculate loans, interest, and investments",
-    icon: <Calculator className="h-10 w-10" />,
-    href: "/tools/calculator",
-  },
-  {
-    id: 3,
-    title: "Budget Tracker",
-    description: "Monitor your income and expenses",
-    icon: <Wallet className="h-10 w-10" />,
-    href: "/tools/budget",
-  },
-  {
-    id: 4,
-    title: "Investment Portfolio",
-    description: "Track and analyze your investments",
-    icon: <PieChart className="h-10 w-10" />,
-    href: "/tools/portfolio",
-  },
-  {
-    id: 5,
-    title: "Market Trends",
-    description: "Stay updated with market movements",
-    icon: <TrendingUp className="h-10 w-10" />,
-    href: "/tools/trends",
-  },
-  {
-    id: 6,
-    title: "Performance Analytics",
-    description: "Analyze financial performance metrics",
-    icon: <BarChart3 className="h-10 w-10" />,
-    href: "/tools/analytics",
-  },
+    {
+        id: 1,
+        title: "Inversiones",
+        description: "Monitorea y analiza tus inversiones en el mercado",
+        icon: <BarChart3 className="h-10 w-10" />,
+        href: "/tools/stocks",
+    },
+    {
+        id: 2,
+        title: "Calculadoras",
+        description: "Utiliza calculadoras financieras para tus necesidades",
+        icon: <Calculator className="h-10 w-10" />,
+        href: "/tools/calculator",
+    },
+    {
+        id: 3,
+        title: "Ahorros",
+        description: "Gestiona y optimiza tus ahorros personales",
+        icon: <Wallet className="h-10 w-10" />,
+        href: "/tools/budget",
+    },
+    {
+        id: 4,
+        title: "IA de Finanzas",
+        description: "Aprovecha la inteligencia artificial para tus finanzas",
+        icon: <Cpu className="h-10 w-10" />,
+        href: "/tools/portfolio",
+    },
+    {
+        id: 5,
+        title: "Criptomonedas",
+        description: "Sigue las últimas tendencias en criptomonedas",
+        icon: <Bitcoin className="h-10 w-10" />,
+        href: "/tools/trends",
+    },
+    {
+        id: 6,
+        title: "Trabajo y sectores",
+        description: "Explora métricas y análisis de diferentes sectores",
+        icon: <Briefcase className="h-10 w-10" />,
+        href: "/tools/analytics",
+    },
 ];
 
 interface FinanceToolCardProps {
@@ -81,7 +81,7 @@ function FinanceToolCard({
       href={href}
       className="block transition-all duration-200 hover:scale-[1.02]"
     >
-      <Card className="h-full cursor-pointer border-2 transition-colors hover:border-primary/50 hover:bg-muted/50">
+      <Card className="h-full min-h-40 cursor-pointer border-2 transition-colors hover:border-primary/50 hover:bg-muted/50">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-xl font-medium">{title}</CardTitle>
           <div className="text-primary">{icon}</div>
