@@ -18,7 +18,29 @@ export const Navbar = () => {
 
       <DesktopNavBar />
 
-      <div className="hidden lg:flex">
+      <div className="hidden lg:flex items-center">
+        <Button
+          asChild
+          variant="ghost"
+          className="font-bold"
+        >
+          <Link
+            href="/login"
+          >
+            Iniciar sesión
+          </Link>
+        </Button>
+        <Button
+          asChild
+          variant="ghost"
+          className="font-bold mr-4 text-primary"
+        >
+          <Link
+            href="/register"
+          >
+            Crear una cuenta
+          </Link>
+        </Button>
         <ToggleTheme />
 
         <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">

@@ -34,22 +34,19 @@ export const HeroSection = () => {
           </p>
 
           <div className="space-y-4 md:space-y-0 md:space-x-4">
-            <Button className="w-5/6 md:w-1/4 font-bold group/arrow">
-              Empezar
-              <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
-            </Button>
+            <Link href="/register">
+              <Button className="w-5/6 md:w-1/4 font-bold group/arrow">
+                Empezar
+                <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
 
             <Button
               asChild
               variant="secondary"
               className="w-5/6 md:w-1/4 font-bold"
             >
-              <Link
-                href="https://github.com/Michillas"
-                target="_blank"
-              >
-                Herramientas
-              </Link>
+              <Link href="/tools">Herramientas</Link>
             </Button>
           </div>
         </div>

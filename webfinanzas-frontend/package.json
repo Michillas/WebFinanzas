@@ -1,5 +1,5 @@
 {
-  "name": "shadcn-landing-page",
+  "name": "webfinanzas-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -33,6 +33,7 @@
     "shadcn-landing-page": "file:",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "webfinanzas-frontend": "file:",
     "zod": "^3.23.8"
   },
   "devDependencies": {
