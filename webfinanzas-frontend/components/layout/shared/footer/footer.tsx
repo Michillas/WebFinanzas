@@ -14,7 +14,7 @@ export const FooterSection = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Contact</h3>
+            <h3 className="font-bold text-lg">Contacto</h3>
             <div>
               <Link href="#" className="opacity-60 hover:opacity-100">
                 Github
@@ -35,7 +35,7 @@ export const FooterSection = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Platforms</h3>
+            <h3 className="font-bold text-lg">Plataformas</h3>
             <div>
               <Link href="#" className="opacity-60 hover:opacity-100">
                 iOS
@@ -56,7 +56,7 @@ export const FooterSection = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Help</h3>
+            <h3 className="font-bold text-lg">Soporte</h3>
             <div>
               <Link href="#" className="opacity-60 hover:opacity-100">
                 Contact Us
@@ -77,7 +77,7 @@ export const FooterSection = () => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Socials</h3>
+            <h3 className="font-bold text-lg">Sobre nosotros</h3>
             <div>
               <Link href="#" className="opacity-60 hover:opacity-100">
                 Twitch
