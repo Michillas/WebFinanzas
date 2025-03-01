@@ -6,7 +6,7 @@ import { Mail, Lock, Github } from "lucide-react"
 
 export default function LoginPage() {
     return (
-        <div className="flex mt-32 items-center justify-center p-4">
+        <div className="flex mt-28 items-center justify-center p-4">
             <Card className="w-full max-w-md">
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl font-bold">Iniciar sesión</CardTitle>
