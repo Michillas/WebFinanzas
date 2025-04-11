@@ -22,7 +22,7 @@
 > ## 3º Configura el backend (Spring Boot)
 > ### application.properties:
 > ```properties
-> spring.datasource.url=jdbc:mysql://localhost:3306/finanzas
+> spring.datasource.url=jdbc:mysql://localhost:3306/webfinanzas
 > spring.datasource.username=tu_usuario
 > spring.datasource.password=tu_contraseña
 > ```
