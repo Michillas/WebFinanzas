@@ -14,12 +14,12 @@ export default function RegisterPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
-                        <Label htmlFor="name">Nombre Completo</Label>
+                        <Label htmlFor="name">Nombre de usuario</Label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-muted-foreground">
                                 <User className="h-4 w-4" />
                             </div>
-                            <Input id="name" placeholder="John Doe" className="pl-10" />
+                            <Input id="name" placeholder="" className="pl-10" />
                         </div>
                     </div>
                     <div className="space-y-2">
