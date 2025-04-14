@@ -3,7 +3,7 @@
 import {
     BarChart3,
     Calculator,
-    Wallet,
+    BookIcon,
     Cpu,
     Bitcoin,
     Briefcase,
@@ -21,8 +21,8 @@ import type { ReactNode } from "react";
 const financeTools = [
     {
         id: 1,
-        title: "Inversiones",
-        description: "Monitorea y analiza tus inversiones en el mercado",
+        title: "Stocks y ETFs",
+        description: "Monitorea y analiza stocks y ETFs en el mercado",
         icon: <BarChart3 className="h-10 w-10" />,
         href: "/tools/investments",
     },
@@ -35,10 +35,10 @@ const financeTools = [
     },
     {
         id: 3,
-        title: "Ahorros",
+        title: "Guias",
         description: "Gestiona y optimiza tus ahorros personales",
-        icon: <Wallet className="h-10 w-10" />,
-        href: "/tools/savings",
+        icon: <BookIcon className="h-10 w-10" />,
+        href: "/tools/guides",
     },
     {
         id: 4,

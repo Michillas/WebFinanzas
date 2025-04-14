@@ -1,4 +1,4 @@
-export default function SavingsPage() {
+export default function GuidesPage() {
     return(
         <>
         </>
