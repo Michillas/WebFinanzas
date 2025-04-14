@@ -118,6 +118,11 @@ export default function Page() {
             href={tool.href}
           />
         ))}
+        <Link href="/dashboard" className="flex text-center border-2 col-span-3 hover:scale-[1.02] transition-all duration-200 hover:border-primary/50 hover:bg-muted/50 p-2 rounded-lg bg-card">
+          <div className="flex items-center justify-center w-full h-full">
+            <div className="text-muted-foreground">-</div><div className=" text-xl font-medium mx-1">Entrar a<span className="text-transparent bg-gradient-to-r from-[#c2ff94] to-primary bg-clip-text mx-1">FireBoard</span></div><div className="text-muted-foreground"> -</div>
+          </div>
+        </Link>
       </div>
     </main>
   );
