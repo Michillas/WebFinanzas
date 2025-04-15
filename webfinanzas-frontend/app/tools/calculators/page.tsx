@@ -1,4 +1,4 @@
-import { CalculadoraInteresCompuesto } from "@/components/layout/tools/calculators";
+import { CalculadoraInteresCompuesto } from "@/components/layout/tools/calculators/calculators";
 
 export default function CalculatorsPage() {
     return(
