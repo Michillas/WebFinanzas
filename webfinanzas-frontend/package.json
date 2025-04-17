@@ -11,6 +11,7 @@
   "dependencies": {
     "@devnomic/marquee": "^1.0.2",
     "@hookform/resolvers": "^3.9.0",
+    "@nanostores/react": "github:ai/react",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.1.7",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -27,6 +28,8 @@
     "@radix-ui/react-slider": "^1.2.4",
     "@radix-ui/react-slot": "^1.2.0",
     "@radix-ui/react-tabs": "^1.1.4",
+    "@radix-ui/react-tooltip": "^1.2.0",
+    "ai": "^4.3.9",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
