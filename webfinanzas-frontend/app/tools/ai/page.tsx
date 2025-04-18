@@ -37,7 +37,6 @@ export default function AiPage() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [promptsOpen, setPromptsOpen] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
@@ -271,11 +270,10 @@ export default function AiPage() {
           </div>
         </div>
 
-        <div className="w-72 ml-1 flex-shrink-0 h-[calc(100vh-8rem)]">
+        <div className="w-72 ml-1 flex-shrink-0">
           <div className="sticky top-4">
             <Collapsible
-              open={promptsOpen}
-              onOpenChange={setPromptsOpen}
+              open={true}
               className="bg-gray-900/50 rounded-lg border border-gray-800 overflow-hidden"
             >
               <CollapsibleTrigger asChild>
@@ -284,11 +282,6 @@ export default function AiPage() {
                   className="w-full flex items-center justify-between p-3 text-sm font-medium text-gray-300 hover:text-gray-100"
                 >
                   Plantillas de Preguntas
-                  {promptsOpen ? (
-                    <ChevronUp className="h-4 w-4" />
-                  ) : (
-                    <ChevronDown className="h-4 w-4" />
-                  )}
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent>
