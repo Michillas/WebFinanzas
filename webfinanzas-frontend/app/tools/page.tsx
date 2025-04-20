@@ -35,10 +35,10 @@ const financeTools = [
     },
     {
         id: 3,
-        title: "Guias",
-        description: "Gestiona y optimiza tus ahorros personales",
+        title: "Cursos",
+        description: "Aprende sobre finanzas con cursos open source",
         icon: <BookIcon className="h-10 w-10" />,
-        href: "/tools/guides",
+        href: "/tools/courses",
     },
     {
         id: 4,

@@ -1,4 +1,4 @@
-export default function GuidesPage() {
+export default function CoursesPage() {
     return(
         <>
         </>
