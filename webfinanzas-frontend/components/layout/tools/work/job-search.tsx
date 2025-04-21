@@ -6,7 +6,7 @@ import { Search } from "lucide-react"
 import { JobCard } from "./job-card"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { jobData } from "@/data/job-data"
+import { jobData } from "@/data/jobs"
 
 export function JobSearch() {
   const [searchQuery, setSearchQuery] = useState("")
