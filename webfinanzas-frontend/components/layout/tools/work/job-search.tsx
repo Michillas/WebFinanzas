@@ -67,7 +67,7 @@ export function JobSearch() {
 
       {searchQuery && (
         <p className="text-sm text-gray-500">
-          {sortedJobs.length} {sortedJobs.length === 1 ? "resultado" : "resultados"} para "{searchQuery}"
+          {sortedJobs.length} {sortedJobs.length === 1 ? "resultado" : "resultados"} para {searchQuery}
         </p>
       )}
 
