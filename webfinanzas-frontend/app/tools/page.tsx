@@ -98,7 +98,7 @@ function FinanceToolCard({
 
 export default function Page() {
   return (
-    <main className="flex mt-32 flex-col items-center justify-center bg-background p-4 md:p-8">
+    <main className="flex mt-16 flex-col items-center justify-center bg-background p-4 md:p-8">
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
           Tus <span className="text-transparent bg-gradient-to-r from-[#c2ff94] to-primary bg-clip-text">FireTools</span> Financieras
