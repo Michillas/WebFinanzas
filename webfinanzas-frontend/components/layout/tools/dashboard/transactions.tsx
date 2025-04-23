@@ -48,7 +48,7 @@ export default function Transactions() {
     })
 
   // Get unique categories for filter
-  const categories = ["all", ...new Set(data.transactions.map((t) => t.category))]
+  const categories = ["all", ...Array.from(new Set(data.transactions.map((t) => t.category)))]
 
   return (
     <div className="space-y-4">

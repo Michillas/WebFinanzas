@@ -494,7 +494,7 @@ export default function CoursesPage() {
                             {searchQuery && (
                               <span>
                                 {" "}
-                                para "<span className="font-medium text-foreground">{searchQuery}</span>"
+                                para <span className="font-medium text-foreground">{searchQuery}</span>
                               </span>
                             )}
                           </p>
