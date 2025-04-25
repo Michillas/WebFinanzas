@@ -5,7 +5,10 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import TradingViewWidget from "@/components/layout/tools/investments/tradingview-widget";
+import TradingViewChart from "@/components/layout/tools/investments/tradingview-chart";
+import TradingViewAnalysis from "@/components/layout/tools/investments/tradingview-analysis";
+import TradingViewFinancials from "@/components/layout/tools/investments/tradingview-financials";
+
 
 export default function AssetPage({ params }: { params: { symbol: string } }) {
   const [mounted, setMounted] = useState(false);
@@ -38,7 +41,11 @@ export default function AssetPage({ params }: { params: { symbol: string } }) {
         </div>
 
         <div className="h-[500px] w-full">
-          <TradingViewWidget symbol={params.symbol} />
+          <TradingViewChart symbol={params.symbol} />
+        </div>
+        <div className="flex gap-6">
+          <TradingViewAnalysis symbol={params.symbol} />
+          <TradingViewFinancials symbol={params.symbol} />
         </div>
       </div>
     </div>
