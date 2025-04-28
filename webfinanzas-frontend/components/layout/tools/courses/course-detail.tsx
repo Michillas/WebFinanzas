@@ -61,18 +61,46 @@ const coursesData = [
   },
 ]
 
-export default function CourseDetail({ course, onBack }) {
+interface Course {
+  id: string
+  title: string
+  shortDescription: string
+  description: string
+  category: string
+  categoryName: string
+  difficulty: string
+  lessons: { id: string; title: string; duration?: number; completed?: boolean; description?: string; hasQuiz?: boolean; content?: string; interactive?: string; calculatorType?: string }[]
+  duration: number
+  rating: number
+  studentsCount: number
+  lastUpdate: string
+  instructor: {
+    name: string
+    avatar?: string
+    role: string
+    bio: string
+    socialMedia: { linkedin?: string; twitter?: string; website?: string }
+  }
+  community: { membersCount: number; activeDiscussions: number }
+  certification?: boolean
+  resources: { type: string; title: string; description: string; downloadCount: number }[]
+  successStories?: { name: string; avatar?: string; story: string }[]
+  relatedCourses?: string[]
+  tags?: string[]
+}
+
+export default function CourseDetail({ course, onBack }: { course: Course; onBack: () => void }) {
   const [activeTab, setActiveTab] = useState("contenido")
-  const [activeLesson, setActiveLesson] = useState(null)
+  const [activeLesson, setActiveLesson] = useState<Course["lessons"][number] | null>(null)
   const [completedLessons, setCompletedLessons] = useState(
     course.lessons.filter((lesson) => lesson.completed).map((lesson) => lesson.id),
   )
 
-  const handleLessonClick = (lesson) => {
+  const handleLessonClick = (lesson: any) => {
     setActiveLesson(lesson)
   }
 
-  const handleLessonComplete = (lessonId) => {
+  const handleLessonComplete = (lessonId: any) => {
     if (completedLessons.includes(lessonId)) {
       setCompletedLessons(completedLessons.filter((id) => id !== lessonId))
     } else {
@@ -119,10 +147,10 @@ export default function CourseDetail({ course, onBack }) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2 mb-2">
-            <Badge className={`${categoryColors[course.category] || "bg-gray-100 text-gray-800"}`}>
+            <Badge className={`${categoryColors[course.category as keyof typeof categoryColors] || "bg-gray-100 text-gray-800"}`}>
               {course.categoryName}
             </Badge>
-            <Badge className={`${difficultyColors[course.difficulty] || "bg-gray-100 text-gray-800"}`}>
+            <Badge className={`${difficultyColors[course.difficulty as keyof typeof difficultyColors] || "bg-gray-100 text-gray-800"}`}>
               {course.difficulty}
             </Badge>
           </div>
@@ -408,7 +436,7 @@ export default function CourseDetail({ course, onBack }) {
               </Card>
 
               <Accordion type="single" collapsible className="w-full">
-                {course.lessons.map((lesson, index) => (
+                {course.lessons.map((lesson: any, index: any) => (
                   <AccordionItem key={lesson.id} value={`lesson-${lesson.id}`}>
                     <AccordionTrigger className="hover:bg-emerald-50 px-4 rounded-lg">
                       <div className="flex items-center gap-3 text-left">
@@ -455,11 +483,11 @@ export default function CourseDetail({ course, onBack }) {
               <h2 className="text-xl font-semibold text-emerald-800 mb-4">Recursos Adicionales</h2>
 
               <div className="grid gap-4">
-                {course.resources.map((resource, index) => (
+                {course.resources.map((resource: any, index: any) => (
                   <div key={index} className="p-4 border rounded-lg hover:bg-emerald-50 transition-colors">
                     <div className="flex items-start gap-3">
                       <div className="p-2 bg-emerald-100 text-emerald-800 rounded-lg">
-                        {resourceTypeIcons[resource.type] || <FileText className="h-4 w-4" />}
+                        {resourceTypeIcons[resource.type as keyof typeof resourceTypeIcons] || <FileText className="h-4 w-4" />}
                       </div>
                       <div className="flex-1">
                         <h3 className="font-medium text-emerald-800">{resource.title}</h3>
@@ -496,7 +524,7 @@ export default function CourseDetail({ course, onBack }) {
               <div className="mb-6">
                 <h3 className="font-medium mb-2">Historias de Éxito</h3>
                 <div className="grid gap-4">
-                  {course.successStories?.map((story, index) => (
+                  {course.successStories?.map((story: any, index: any) => (
                     <div key={index} className="p-4 border rounded-lg bg-muted/30">
                       <div className="flex items-start gap-3">
                         <Avatar className="h-10 w-10">
@@ -504,7 +532,7 @@ export default function CourseDetail({ course, onBack }) {
                           <AvatarFallback>
                             {story.name
                               .split(" ")
-                              .map((n) => n[0])
+                              .map((n: any) => n[0])
                               .join("")}
                           </AvatarFallback>
                         </Avatar>
@@ -538,14 +566,14 @@ export default function CourseDetail({ course, onBack }) {
               <h2 className="text-xl font-semibold text-emerald-800 mb-4">Cursos Relacionados</h2>
 
               <div className="grid gap-4">
-                {course.relatedCourses?.map((relatedId) => {
+                {course.relatedCourses?.map((relatedId: any) => {
                   const relatedCourse = coursesData.find((c) => c.id === relatedId)
                   if (!relatedCourse) return null
 
                   return (
                     <div key={relatedId} className="p-4 border rounded-lg hover:bg-emerald-50 transition-colors">
                       <div className="flex items-start gap-3">
-                        <div className={`p-2 rounded-lg ${categoryColors[relatedCourse.category] || "bg-gray-100"}`}>
+                        <div className={`p-2 rounded-lg ${categoryColors[relatedCourse.category as keyof typeof categoryColors] || "bg-gray-100"}`}>
                           <BookOpen className="h-4 w-4" />
                         </div>
                         <div className="flex-1">
@@ -573,7 +601,7 @@ export default function CourseDetail({ course, onBack }) {
               <div className="mt-6">
                 <h3 className="font-medium mb-2">Etiquetas del Curso</h3>
                 <div className="flex flex-wrap gap-2">
-                  {course.tags?.map((tag, index) => (
+                  {course.tags?.map((tag: any, index: any) => (
                     <Badge key={index} variant="outline" className="cursor-pointer hover:bg-muted">
                       {tag}
                     </Badge>

@@ -6,8 +6,18 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { BookOpen, Clock } from "lucide-react"
 
-export default function CourseCard({ course, onClick }) {
-  const categoryColors = {
+interface Course {
+  title: string;
+  category: string;
+  categoryName: string;
+  shortDescription: string;
+  lessons: { id: string; title: string }[];
+  duration: number;
+  progress?: number;
+}
+
+export default function CourseCard({ course, onClick }: { course: Course; onClick: () => void }) {
+  const categoryColors: Record<string, string> = {
     presupuesto: "bg-blue-100 text-blue-800",
     ahorro: "bg-green-100 text-green-800",
     inversion: "bg-purple-100 text-purple-800",
@@ -49,7 +59,7 @@ export default function CourseCard({ course, onClick }) {
       </CardContent>
       <CardFooter>
         <Button className="w-full bg-primary hover:bg-lime-400">
-          {course.progress > 0 ? "Continuar Curso" : "Comenzar Curso"}
+          {(course.progress ?? 0) > 0 ? "Continuar Curso" : "Comenzar Curso"}
         </Button>
       </CardFooter>
     </Card>
