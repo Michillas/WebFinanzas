@@ -11,7 +11,7 @@ interface Course {
   category: string;
   categoryName: string;
   shortDescription: string;
-  lessons: { id: string; title: string }[];
+  lessons: { id: number; title: string }[];
   duration: number;
   progress?: number;
 }
