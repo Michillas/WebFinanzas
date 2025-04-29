@@ -67,13 +67,6 @@ export default function Page() {
               </TabsContent>
             </Tabs>
           </main>
-          <footer className="border-t py-4">
-            <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
-              <p className="text-sm text-muted-foreground text-center md:text-left">
-                &copy; {new Date().getFullYear()} FireBoard. All data is stored locally in your browser.
-              </p>
-            </div>
-          </footer>
         </div>
       </DataProvider>
     )  
