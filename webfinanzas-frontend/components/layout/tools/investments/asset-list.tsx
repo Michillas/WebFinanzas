@@ -204,7 +204,7 @@ export function AssetList({ searchTerm, activeTab }: AssetListProps) {
   }
 
   if (!mounted) {
-    return null // Evitar renderizado en el servidor para prevenir errores de hidratación
+    return null
   }
 
   return (
