@@ -30,7 +30,7 @@ export default function InvestmentsPage() {
           <p className="text-muted-foreground">Sigue acciones, ETFs y otros activos en tiempo real</p>
         </div>
 
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="flex gap-4 md:flex-row md:items-center md:justify-between">
           <AssetTabs onTabChange={handleTabChange} />
           <div className="relative w-full md:w-72">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
