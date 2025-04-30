@@ -31,23 +31,23 @@ export default function Page() {
               <TabsList className="grid grid-cols-5 w-full max-w-3xl mx-auto">
                 <TabsTrigger value="dashboard">
                   <HomeIcon className="h-4 w-4 mr-2" />
-                  Dashboard
+                  Inicio
                 </TabsTrigger>
                 <TabsTrigger value="transactions">
                   <ArrowUpCircle className="h-4 w-4 mr-2" />
-                  Transactions
+                  Transacciones
                 </TabsTrigger>
                 <TabsTrigger value="budgets">
                   <Wallet className="h-4 w-4 mr-2" />
-                  Budgets
+                  Presupuestos
                 </TabsTrigger>
                 <TabsTrigger value="reports">
                   <PieChart className="h-4 w-4 mr-2" />
-                  Reports
+                  Graficos
                 </TabsTrigger>
                 <TabsTrigger value="settings">
                   <Settings className="h-4 w-4 mr-2" />
-                  Settings
+                  Ajustes
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="dashboard" className="space-y-4">

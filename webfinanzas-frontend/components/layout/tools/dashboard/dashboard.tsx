@@ -53,47 +53,47 @@ export default function Dashboard() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+        <h2 className="text-3xl font-bold tracking-tight">FireBoard</h2>
         <Button onClick={() => setShowAddTransaction(true)}>
-          <Plus className="mr-2 h-4 w-4" /> Add Transaction
+          <Plus className="mr-2 h-4 w-4" /> Agregar Transacción
         </Button>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
+            <CardTitle className="text-sm font-medium">Total</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{formatCurrency(balance, data.settings.currency)}</div>
             <p className="text-xs text-muted-foreground">
-              {balance >= 0 ? "You're doing great!" : "You're spending more than you earn"}
+              {balance >= 0 ? "Lo estas haciendo bien!" : "Estas gastando más de lo que ganas!"}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Income</CardTitle>
+            <CardTitle className="text-sm font-medium">Recibido</CardTitle>
             <ArrowUpCircle className="h-4 w-4 text-emerald-500" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-emerald-500">
               {formatCurrency(totalIncome, data.settings.currency)}
             </div>
-            <p className="text-xs text-muted-foreground">This month</p>
+            <p className="text-xs text-muted-foreground">Este mes</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Expenses</CardTitle>
+            <CardTitle className="text-sm font-medium">Gastos</CardTitle>
             <ArrowDownCircle className="h-4 w-4 text-rose-500" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-rose-500">
               {formatCurrency(totalExpenses, data.settings.currency)}
             </div>
-            <p className="text-xs text-muted-foreground">This month</p>
+            <p className="text-xs text-muted-foreground">Este mes</p>
           </CardContent>
         </Card>
       </div>
@@ -101,8 +101,8 @@ export default function Dashboard() {
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="col-span-1">
           <CardHeader>
-            <CardTitle>Recent Transactions</CardTitle>
-            <CardDescription>Your latest 5 transactions</CardDescription>
+            <CardTitle>Transacciones Recientes</CardTitle>
+            <CardDescription>Tus ultimas 5 transacciones</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -139,15 +139,15 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter>
             <Button variant="outline" className="w-full" onClick={() => setShowAddTransaction(true)}>
-              <Plus className="mr-2 h-4 w-4" /> Add Transaction
+              <Plus className="mr-2 h-4 w-4" /> Agregar transacción
             </Button>
           </CardFooter>
         </Card>
 
         <Card className="col-span-1">
           <CardHeader>
-            <CardTitle>Budget Overview</CardTitle>
-            <CardDescription>Your monthly budget progress</CardDescription>
+            <CardTitle>Presupuestos</CardTitle>
+            <CardDescription>Tu progreso en tus presupuestos mensuales</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -158,7 +158,7 @@ export default function Dashboard() {
                       <div className="space-y-1">
                         <p className="text-sm font-medium leading-none">{budget.category}</p>
                         <p className="text-xs text-muted-foreground">
-                          {formatCurrency(budget.spent, data.settings.currency)} of{" "}
+                          {formatCurrency(budget.spent, data.settings.currency)} de{" "}
                           {formatCurrency(budget.amount, data.settings.currency)}
                         </p>
                       </div>
@@ -174,7 +174,7 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter>
             <Button variant="outline" className="w-full" asChild>
-              <a href="#budgets">Manage Budgets</a>
+              <a href="#budgets">Editar presupuestos</a>
             </Button>
           </CardFooter>
         </Card>
