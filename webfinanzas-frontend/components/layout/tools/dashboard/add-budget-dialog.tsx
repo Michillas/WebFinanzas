@@ -57,8 +57,8 @@ export function AddBudgetDialog({ open, onOpenChange }: AddBudgetDialogProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add Budget</DialogTitle>
-          <DialogDescription>Create a new budget to track your spending.</DialogDescription>
+          <DialogTitle>Agregar presupuesto</DialogTitle>
+          <DialogDescription>Crea un nuevo presupuesto para seguir tus gastos.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -67,11 +67,11 @@ export function AddBudgetDialog({ open, onOpenChange }: AddBudgetDialogProps) {
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Categoria</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a category" />
+                        <SelectValue placeholder="Selecciona una categoria" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -91,7 +91,7 @@ export function AddBudgetDialog({ open, onOpenChange }: AddBudgetDialogProps) {
               name="amount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Budget Amount</FormLabel>
+                  <FormLabel>Cantidad</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -111,17 +111,17 @@ export function AddBudgetDialog({ open, onOpenChange }: AddBudgetDialogProps) {
               name="period"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Period</FormLabel>
+                  <FormLabel>Periodo</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a period" />
+                        <SelectValue placeholder="Selecciona un periodo" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="weekly">Weekly</SelectItem>
-                      <SelectItem value="monthly">Monthly</SelectItem>
-                      <SelectItem value="yearly">Yearly</SelectItem>
+                      <SelectItem value="weekly">Semanal</SelectItem>
+                      <SelectItem value="monthly">Mensual</SelectItem>
+                      <SelectItem value="yearly">Anual</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -129,7 +129,7 @@ export function AddBudgetDialog({ open, onOpenChange }: AddBudgetDialogProps) {
               )}
             />
             <DialogFooter>
-              <Button type="submit">Add Budget</Button>
+              <Button type="submit">Agregar</Button>
             </DialogFooter>
           </form>
         </Form>

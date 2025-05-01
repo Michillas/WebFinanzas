@@ -23,9 +23,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 
 const formSchema = z.object({
   type: z.enum(["income", "expense"]),
-  amount: z.coerce.number().positive("Amount must be positive"),
-  category: z.string().min(1, "Category is required"),
-  description: z.string().min(1, "Description is required"),
+  amount: z.coerce.number().positive("La cantidad debe ser positiva"),
+  category: z.string().min(1, "La categoría es obligatoria"),
+  description: z.string().min(1, "La descripción es obligatoria"),
   date: z.date(),
 })
 
@@ -66,8 +66,8 @@ export function AddTransactionDialog({ open, onOpenChange }: AddTransactionDialo
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add Transaction</DialogTitle>
-          <DialogDescription>Add a new transaction to track your finances.</DialogDescription>
+          <DialogTitle>Añadir Transacción</DialogTitle>
+          <DialogDescription>Añade una nueva transacción para realizar un seguimiento de tus finanzas.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -76,16 +76,16 @@ export function AddTransactionDialog({ open, onOpenChange }: AddTransactionDialo
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Type</FormLabel>
+                  <FormLabel>Tipo</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select transaction type" />
+                        <SelectValue placeholder="Selecciona el tipo de transacción" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="income">Income</SelectItem>
-                      <SelectItem value="expense">Expense</SelectItem>
+                      <SelectItem value="income">Ingreso</SelectItem>
+                      <SelectItem value="expense">Gasto</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -97,7 +97,7 @@ export function AddTransactionDialog({ open, onOpenChange }: AddTransactionDialo
               name="amount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Amount</FormLabel>
+                  <FormLabel>Cantidad</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -117,11 +117,11 @@ export function AddTransactionDialog({ open, onOpenChange }: AddTransactionDialo
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Categoría</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a category" />
+                        <SelectValue placeholder="Selecciona una categoría" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -141,9 +141,9 @@ export function AddTransactionDialog({ open, onOpenChange }: AddTransactionDialo
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Descripción</FormLabel>
                   <FormControl>
-                    <Input placeholder="Transaction description" {...field} />
+                    <Input placeholder="Descripción de la transacción" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -154,7 +154,7 @@ export function AddTransactionDialog({ open, onOpenChange }: AddTransactionDialo
               name="date"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel>Date</FormLabel>
+                  <FormLabel>Fecha</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -162,7 +162,7 @@ export function AddTransactionDialog({ open, onOpenChange }: AddTransactionDialo
                           variant={"outline"}
                           className={cn("w-full pl-3 text-left font-normal", !field.value && "text-muted-foreground")}
                         >
-                          {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
+                          {field.value ? format(field.value, "PPP") : <span>Selecciona una fecha</span>}
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
                       </FormControl>
@@ -176,7 +176,7 @@ export function AddTransactionDialog({ open, onOpenChange }: AddTransactionDialo
               )}
             />
             <DialogFooter>
-              <Button type="submit">Add Transaction</Button>
+              <Button type="submit">Añadir Transacción</Button>
             </DialogFooter>
           </form>
         </Form>

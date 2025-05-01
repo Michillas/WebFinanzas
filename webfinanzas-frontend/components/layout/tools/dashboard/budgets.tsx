@@ -30,9 +30,9 @@ export default function Budgets() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold tracking-tight">Budgets</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Presupuestos</h2>
         <Button onClick={() => setShowAddBudget(true)}>
-          <Plus className="mr-2 h-4 w-4" /> Add Budget
+          <Plus className="mr-2 h-4 w-4" /> Agregar presupuesto
         </Button>
       </div>
 
@@ -52,7 +52,15 @@ export default function Budgets() {
                 <div className="flex justify-between items-start">
                   <div>
                     <CardTitle>{budget.category}</CardTitle>
-                    <CardDescription>{budget.period}</CardDescription>
+                    <CardDescription>
+                      {budget.period === "monthly"
+                      ? "Mensual"
+                      : budget.period === "weekly"
+                      ? "Semanal"
+                      : budget.period === "yearly"
+                      ? "Anual"
+                      : budget.period}
+                    </CardDescription>
                   </div>
                   <div className="flex gap-1">
                     <Button variant="ghost" size="icon" onClick={() => setEditingBudget(budget)}>
@@ -70,7 +78,7 @@ export default function Budgets() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span>
-                      {formatCurrency(budget.spent, data.settings.currency)} of{" "}
+                      {formatCurrency(budget.spent, data.settings.currency)} de{" "}
                       {formatCurrency(budget.amount, data.settings.currency)}
                     </span>
                     <span className={budget.percentage > 90 ? "text-rose-500 font-medium" : ""}>
@@ -88,8 +96,8 @@ export default function Budgets() {
               <CardFooter className="pt-2">
                 <div className={`text-sm ${budget.remaining < 0 ? "text-rose-500" : "text-muted-foreground"}`}>
                   {budget.remaining >= 0
-                    ? `${formatCurrency(budget.remaining, data.settings.currency)} remaining`
-                    : `${formatCurrency(Math.abs(budget.remaining), data.settings.currency)} over budget`}
+                    ? `${formatCurrency(budget.remaining, data.settings.currency)} restante`
+                    : `${formatCurrency(Math.abs(budget.remaining), data.settings.currency)} por encima`}
                 </div>
               </CardFooter>
             </Card>

@@ -18,9 +18,9 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 const formSchema = z.object({
-  category: z.string().min(1, "Category is required"),
-  amount: z.coerce.number().positive("Amount must be positive"),
-  spent: z.coerce.number().min(0, "Spent amount cannot be negative"),
+  category: z.string().min(1, "La categoría es obligatoria"),
+  amount: z.coerce.number().positive("La cantidad debe ser positiva"),
+  spent: z.coerce.number().min(0, "La cantidad gastada no puede ser negativa"),
   period: z.enum(["monthly", "weekly", "yearly"]),
 })
 
@@ -60,8 +60,8 @@ export function EditBudgetDialog({ budget, open, onOpenChange }: EditBudgetDialo
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit Budget</DialogTitle>
-          <DialogDescription>Update your budget details.</DialogDescription>
+          <DialogTitle>Editar Presupuesto</DialogTitle>
+          <DialogDescription>Actualiza los detalles de tu presupuesto.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -70,11 +70,11 @@ export function EditBudgetDialog({ budget, open, onOpenChange }: EditBudgetDialo
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Categoría</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a category" />
+                        <SelectValue placeholder="Selecciona una categoría" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -94,7 +94,7 @@ export function EditBudgetDialog({ budget, open, onOpenChange }: EditBudgetDialo
               name="amount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Budget Amount</FormLabel>
+                  <FormLabel>Cantidad del Presupuesto</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -114,7 +114,7 @@ export function EditBudgetDialog({ budget, open, onOpenChange }: EditBudgetDialo
               name="spent"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Amount Spent</FormLabel>
+                  <FormLabel>Cantidad Gastada</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -125,7 +125,7 @@ export function EditBudgetDialog({ budget, open, onOpenChange }: EditBudgetDialo
                       onChange={(e) => field.onChange(e.target.valueAsNumber || 0)}
                     />
                   </FormControl>
-                  <FormDescription>This is usually calculated automatically from your transactions.</FormDescription>
+                  <FormDescription>Esto generalmente se calcula automáticamente a partir de tus transacciones.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -135,17 +135,17 @@ export function EditBudgetDialog({ budget, open, onOpenChange }: EditBudgetDialo
               name="period"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Period</FormLabel>
+                  <FormLabel>Periodo</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a period" />
+                        <SelectValue placeholder="Selecciona un periodo" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="weekly">Weekly</SelectItem>
-                      <SelectItem value="monthly">Monthly</SelectItem>
-                      <SelectItem value="yearly">Yearly</SelectItem>
+                      <SelectItem value="weekly">Semanal</SelectItem>
+                      <SelectItem value="monthly">Mensual</SelectItem>
+                      <SelectItem value="yearly">Anual</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -153,7 +153,7 @@ export function EditBudgetDialog({ budget, open, onOpenChange }: EditBudgetDialo
               )}
             />
             <DialogFooter>
-              <Button type="submit">Update Budget</Button>
+              <Button type="submit">Actualizar Presupuesto</Button>
             </DialogFooter>
           </form>
         </Form>

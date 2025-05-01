@@ -16,8 +16,8 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 const formSchema = z.object({
-  name: z.string().min(1, "Category name is required"),
-  color: z.string().regex(/^#[0-9A-F]{6}$/i, "Must be a valid hex color"),
+  name: z.string().min(1, "El nombre de la categoría es obligatorio"),
+  color: z.string().regex(/^#[0-9A-F]{6}$/i, "Debe ser un color hexadecimal válido"),
 })
 
 type FormValues = z.infer<typeof formSchema>
@@ -55,8 +55,8 @@ export function AddCategoryDialog({ open, onOpenChange }: AddCategoryDialogProps
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add Category</DialogTitle>
-          <DialogDescription>Create a new category for your transactions.</DialogDescription>
+          <DialogTitle>Añadir Categoría</DialogTitle>
+          <DialogDescription>Crea una nueva categoría para tus transacciones.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -65,9 +65,9 @@ export function AddCategoryDialog({ open, onOpenChange }: AddCategoryDialogProps
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category Name</FormLabel>
+                  <FormLabel>Nombre de la Categoría</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Groceries, Rent, Salary" {...field} />
+                    <Input placeholder="p. ej. Comestibles, Alquiler, Salario" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -85,13 +85,13 @@ export function AddCategoryDialog({ open, onOpenChange }: AddCategoryDialogProps
                     </FormControl>
                     <Input value={field.value} onChange={(e) => field.onChange(e.target.value)} className="flex-1" />
                   </div>
-                  <FormDescription>Choose a color to represent this category.</FormDescription>
+                  <FormDescription>Elige un color para representar esta categoría.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <DialogFooter>
-              <Button type="submit">Add Category</Button>
+              <Button type="submit">Añadir Categoría</Button>
             </DialogFooter>
           </form>
         </Form>

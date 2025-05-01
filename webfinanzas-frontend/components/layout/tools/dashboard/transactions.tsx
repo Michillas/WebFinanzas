@@ -53,16 +53,16 @@ export default function Transactions() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold tracking-tight">Transactions</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Transacciones</h2>
         <Button onClick={() => setShowAddTransaction(true)}>
-          <Plus className="mr-2 h-4 w-4" /> Add Transaction
+          <Plus className="mr-2 h-4 w-4" /> Añadir Transacción
         </Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Transaction History</CardTitle>
-          <CardDescription>Manage and filter your transactions</CardDescription>
+          <CardTitle>Historial de Transacciones</CardTitle>
+          <CardDescription>Gestiona y filtra tus transacciones</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -71,7 +71,7 @@ export default function Transactions() {
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="search"
-                  placeholder="Search transactions..."
+                  placeholder="Buscar transacciones..."
                   className="pl-8"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -80,23 +80,23 @@ export default function Transactions() {
               <div className="flex gap-2">
                 <Select value={filterType} onValueChange={(value) => setFilterType(value as any)}>
                   <SelectTrigger className="w-[130px]">
-                    <SelectValue placeholder="Type" />
+                    <SelectValue placeholder="Tipo" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Types</SelectItem>
-                    <SelectItem value="income">Income</SelectItem>
-                    <SelectItem value="expense">Expense</SelectItem>
+                    <SelectItem value="all">Todos los Tipos</SelectItem>
+                    <SelectItem value="income">Ingreso</SelectItem>
+                    <SelectItem value="expense">Gasto</SelectItem>
                   </SelectContent>
                 </Select>
 
                 <Select value={filterCategory} onValueChange={setFilterCategory}>
                   <SelectTrigger className="w-[130px]">
-                    <SelectValue placeholder="Category" />
+                    <SelectValue placeholder="Categoría" />
                   </SelectTrigger>
                   <SelectContent>
                     {categories.map((category) => (
                       <SelectItem key={category} value={category}>
-                        {category === "all" ? "All Categories" : category}
+                        {category === "all" ? "Todas las Categorías" : category}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -115,7 +115,7 @@ export default function Transactions() {
                         setSortOrder("desc")
                       }}
                     >
-                      Newest First
+                      Más Recientes
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => {
@@ -123,7 +123,7 @@ export default function Transactions() {
                         setSortOrder("asc")
                       }}
                     >
-                      Oldest First
+                      Más Antiguos
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => {
@@ -131,7 +131,7 @@ export default function Transactions() {
                         setSortOrder("desc")
                       }}
                     >
-                      Highest Amount
+                      Mayor Cantidad
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => {
@@ -139,7 +139,7 @@ export default function Transactions() {
                         setSortOrder("asc")
                       }}
                     >
-                      Lowest Amount
+                      Menor Cantidad
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => {
@@ -147,7 +147,7 @@ export default function Transactions() {
                         setSortOrder("asc")
                       }}
                     >
-                      Category (A-Z)
+                      Categoría (A-Z)
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -159,12 +159,12 @@ export default function Transactions() {
                 <table className="w-full caption-bottom text-sm">
                   <thead>
                     <tr className="border-b transition-colors hover:bg-muted/50">
-                      <th className="h-12 px-4 text-left align-middle font-medium">Type</th>
-                      <th className="h-12 px-4 text-left align-middle font-medium">Date</th>
-                      <th className="h-12 px-4 text-left align-middle font-medium">Description</th>
-                      <th className="h-12 px-4 text-left align-middle font-medium">Category</th>
-                      <th className="h-12 px-4 text-right align-middle font-medium">Amount</th>
-                      <th className="h-12 px-4 text-right align-middle font-medium">Actions</th>
+                      <th className="h-12 px-4 text-left align-middle font-medium">Tipo</th>
+                      <th className="h-12 px-4 text-left align-middle font-medium">Fecha</th>
+                      <th className="h-12 px-4 text-left align-middle font-medium">Descripción</th>
+                      <th className="h-12 px-4 text-left align-middle font-medium">Categoría</th>
+                      <th className="h-12 px-4 text-right align-middle font-medium">Cantidad</th>
+                      <th className="h-12 px-4 text-right align-middle font-medium">Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -195,11 +195,11 @@ export default function Transactions() {
                             <div className="flex justify-end gap-2">
                               <Button variant="ghost" size="icon" onClick={() => setEditingTransaction(transaction)}>
                                 <Edit className="h-4 w-4" />
-                                <span className="sr-only">Edit</span>
+                                <span className="sr-only">Editar</span>
                               </Button>
                               <Button variant="ghost" size="icon" onClick={() => deleteTransaction(transaction.id)}>
                                 <Trash2 className="h-4 w-4" />
-                                <span className="sr-only">Delete</span>
+                                <span className="sr-only">Eliminar</span>
                               </Button>
                             </div>
                           </td>
@@ -208,7 +208,7 @@ export default function Transactions() {
                     ) : (
                       <tr>
                         <td colSpan={6} className="h-24 text-center align-middle text-muted-foreground">
-                          No transactions found. Try adjusting your filters or add a new transaction.
+                          No se encontraron transacciones. Intenta ajustar los filtros o añade una nueva transacción.
                         </td>
                       </tr>
                     )}
@@ -220,10 +220,10 @@ export default function Transactions() {
         </CardContent>
         <CardFooter className="flex justify-between">
           <div className="text-sm text-muted-foreground">
-            Showing {filteredTransactions.length} of {data.transactions.length} transactions
+            Mostrando {filteredTransactions.length} de {data.transactions.length} transacciones
           </div>
           <Button onClick={() => setShowAddTransaction(true)}>
-            <Plus className="mr-2 h-4 w-4" /> Add Transaction
+            <Plus className="mr-2 h-4 w-4" /> Añadir Transacción
           </Button>
         </CardFooter>
       </Card>

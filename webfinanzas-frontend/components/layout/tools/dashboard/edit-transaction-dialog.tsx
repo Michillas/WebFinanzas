@@ -67,8 +67,8 @@ export function EditTransactionDialog({ transaction, open, onOpenChange }: EditT
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit Transaction</DialogTitle>
-          <DialogDescription>Update the details of your transaction.</DialogDescription>
+          <DialogTitle>Editar Transacción</DialogTitle>
+          <DialogDescription>Actualiza los detalles de tu transacción.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -77,16 +77,16 @@ export function EditTransactionDialog({ transaction, open, onOpenChange }: EditT
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Type</FormLabel>
+                  <FormLabel>Tipo</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select transaction type" />
+                        <SelectValue placeholder="Selecciona el tipo de transacción" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="income">Income</SelectItem>
-                      <SelectItem value="expense">Expense</SelectItem>
+                      <SelectItem value="income">Ingreso</SelectItem>
+                      <SelectItem value="expense">Gasto</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -98,7 +98,7 @@ export function EditTransactionDialog({ transaction, open, onOpenChange }: EditT
               name="amount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Amount</FormLabel>
+                  <FormLabel>Cantidad</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -118,11 +118,11 @@ export function EditTransactionDialog({ transaction, open, onOpenChange }: EditT
               name="category"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Categoría</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a category" />
+                        <SelectValue placeholder="Selecciona una categoría" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -142,9 +142,9 @@ export function EditTransactionDialog({ transaction, open, onOpenChange }: EditT
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Descripción</FormLabel>
                   <FormControl>
-                    <Input placeholder="Transaction description" {...field} />
+                    <Input placeholder="Descripción de la transacción" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -155,7 +155,7 @@ export function EditTransactionDialog({ transaction, open, onOpenChange }: EditT
               name="date"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel>Date</FormLabel>
+                  <FormLabel>Fecha</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -163,7 +163,7 @@ export function EditTransactionDialog({ transaction, open, onOpenChange }: EditT
                           variant={"outline"}
                           className={cn("w-full pl-3 text-left font-normal", !field.value && "text-muted-foreground")}
                         >
-                          {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
+                          {field.value ? format(field.value, "PPP") : <span>Selecciona una fecha</span>}
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
                       </FormControl>
@@ -177,7 +177,7 @@ export function EditTransactionDialog({ transaction, open, onOpenChange }: EditT
               )}
             />
             <DialogFooter>
-              <Button type="submit">Update Transaction</Button>
+              <Button type="submit">Actualizar Transacción</Button>
             </DialogFooter>
           </form>
         </Form>

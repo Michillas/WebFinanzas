@@ -109,12 +109,12 @@ export default function Reports() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold tracking-tight">Reports</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Informes</h2>
         <Tabs value={period} onValueChange={(value) => setPeriod(value as any)} className="w-[400px]">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="week">This Week</TabsTrigger>
-            <TabsTrigger value="month">This Month</TabsTrigger>
-            <TabsTrigger value="year">This Year</TabsTrigger>
+            <TabsTrigger value="week">Esta Semana</TabsTrigger>
+            <TabsTrigger value="month">Este Mes</TabsTrigger>
+            <TabsTrigger value="year">Este Año</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
@@ -122,8 +122,8 @@ export default function Reports() {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle>Income</CardTitle>
-            <CardDescription>Total income for the period</CardDescription>
+            <CardTitle>Ingresos</CardTitle>
+            <CardDescription>Total de ingresos para el período</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-emerald-500">{formatCurrency(income, data.settings.currency)}</div>
@@ -131,8 +131,8 @@ export default function Reports() {
         </Card>
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle>Expenses</CardTitle>
-            <CardDescription>Total expenses for the period</CardDescription>
+            <CardTitle>Gastos</CardTitle>
+            <CardDescription>Total de gastos para el período</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-rose-500">{formatCurrency(expenses, data.settings.currency)}</div>
@@ -140,8 +140,8 @@ export default function Reports() {
         </Card>
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle>Savings</CardTitle>
-            <CardDescription>Income minus expenses</CardDescription>
+            <CardTitle>Ahorros</CardTitle>
+            <CardDescription>Ingresos menos gastos</CardDescription>
           </CardHeader>
           <CardContent>
             <div className={`text-2xl font-bold ${income - expenses >= 0 ? "text-emerald-500" : "text-rose-500"}`}>
@@ -154,15 +154,15 @@ export default function Reports() {
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="col-span-1">
           <CardHeader>
-            <CardTitle>Expenses by Category</CardTitle>
-            <CardDescription>How your expenses are distributed</CardDescription>
+            <CardTitle>Gastos por Categoría</CardTitle>
+            <CardDescription>Cómo se distribuyen tus gastos</CardDescription>
           </CardHeader>
           <CardContent className="h-[300px]">
             {pieChartData.length > 0 ? (
               <PieChart data={pieChartData} />
             ) : (
               <div className="flex h-full items-center justify-center text-muted-foreground">
-                No expense data available for this period
+                No hay datos de gastos disponibles para este período
               </div>
             )}
           </CardContent>
@@ -170,15 +170,15 @@ export default function Reports() {
 
         <Card className="col-span-1">
           <CardHeader>
-            <CardTitle>Income vs Expenses</CardTitle>
-            <CardDescription>Comparison over time</CardDescription>
+            <CardTitle>Ingresos vs Gastos</CardTitle>
+            <CardDescription>Comparación a lo largo del tiempo</CardDescription>
           </CardHeader>
           <CardContent className="h-[300px]">
             {lineChartData.length > 0 ? (
               <LineChart data={lineChartData} />
             ) : (
               <div className="flex h-full items-center justify-center text-muted-foreground">
-                No transaction data available for this period
+                No hay datos de transacciones disponibles para este período
               </div>
             )}
           </CardContent>

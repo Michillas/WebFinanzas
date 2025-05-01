@@ -52,49 +52,49 @@ export default function SettingsPage() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold tracking-tight">Settings</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Configuración</h2>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>General Settings</CardTitle>
-            <CardDescription>Configure your application preferences</CardDescription>
+            <CardTitle>Configuración General</CardTitle>
+            <CardDescription>Configura tus preferencias de la aplicación</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="currency">Currency</Label>
+              <Label htmlFor="currency">Moneda</Label>
               <Select value={currency} onValueChange={setCurrency}>
                 <SelectTrigger id="currency">
-                  <SelectValue placeholder="Select currency" />
+                  <SelectValue placeholder="Selecciona una moneda" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="USD">US Dollar ($)</SelectItem>
+                  <SelectItem value="USD">Dólar Estadounidense ($)</SelectItem>
                   <SelectItem value="EUR">Euro (€)</SelectItem>
-                  <SelectItem value="GBP">British Pound (£)</SelectItem>
-                  <SelectItem value="JPY">Japanese Yen (¥)</SelectItem>
-                  <SelectItem value="CAD">Canadian Dollar (C$)</SelectItem>
-                  <SelectItem value="AUD">Australian Dollar (A$)</SelectItem>
+                  <SelectItem value="GBP">Libra Esterlina (£)</SelectItem>
+                  <SelectItem value="JPY">Yen Japonés (¥)</SelectItem>
+                  <SelectItem value="CAD">Dólar Canadiense (C$)</SelectItem>
+                  <SelectItem value="AUD">Dólar Australiano (A$)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="theme">Theme</Label>
+              <Label htmlFor="theme">Tema</Label>
               <Select value={theme} onValueChange={(value) => setTheme(value as "light" | "dark" | "system")}>
                 <SelectTrigger id="theme">
-                  <SelectValue placeholder="Select theme" />
+                  <SelectValue placeholder="Selecciona un tema" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light">Light</SelectItem>
-                  <SelectItem value="dark">Dark</SelectItem>
-                  <SelectItem value="system">System</SelectItem>
+                  <SelectItem value="light">Claro</SelectItem>
+                  <SelectItem value="dark">Oscuro</SelectItem>
+                  <SelectItem value="system">Sistema</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="startDay">Start Day of Month</Label>
+              <Label htmlFor="startDay">Día de Inicio del Mes</Label>
               <Input
                 id="startDay"
                 type="number"
@@ -103,20 +103,20 @@ export default function SettingsPage() {
                 value={startDayOfMonth}
                 onChange={(e) => setStartDayOfMonth(e.target.value || "1")}
               />
-              <p className="text-sm text-muted-foreground">The day of the month when your budget period starts.</p>
+              <p className="text-sm text-muted-foreground">El día del mes en que comienza tu período presupuestario.</p>
             </div>
           </CardContent>
           <CardFooter>
             <Button onClick={saveSettings}>
-              <Save className="mr-2 h-4 w-4" /> Save Settings
+              <Save className="mr-2 h-4 w-4" /> Guardar Configuración
             </Button>
           </CardFooter>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Categories</CardTitle>
-            <CardDescription>Manage your transaction categories</CardDescription>
+            <CardTitle>Categorías</CardTitle>
+            <CardDescription>Gestiona tus categorías de transacciones</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="rounded-md border">
@@ -125,8 +125,8 @@ export default function SettingsPage() {
                   <thead>
                     <tr className="border-b transition-colors hover:bg-muted/50">
                       <th className="h-12 px-4 text-left align-middle font-medium">Color</th>
-                      <th className="h-12 px-4 text-left align-middle font-medium">Name</th>
-                      <th className="h-12 px-4 text-right align-middle font-medium">Actions</th>
+                      <th className="h-12 px-4 text-left align-middle font-medium">Nombre</th>
+                      <th className="h-12 px-4 text-right align-middle font-medium">Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -139,8 +139,8 @@ export default function SettingsPage() {
                         <td className="p-4 align-middle text-right">
                           <div className="flex justify-end gap-2">
                             <Button variant="ghost" size="icon" onClick={() => setEditingCategory(category)}>
-                              <span className="sr-only">Edit</span>
-                              Edit
+                              <span className="sr-only">Editar</span>
+                              Editar
                             </Button>
                           </div>
                         </td>
@@ -152,23 +152,23 @@ export default function SettingsPage() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={() => setShowAddCategory(true)}>Add Category</Button>
+            <Button onClick={() => setShowAddCategory(true)}>Añadir Categoría</Button>
           </CardFooter>
         </Card>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Data Management</CardTitle>
-          <CardDescription>Manage your financial data</CardDescription>
+          <CardTitle>Gestión de Datos</CardTitle>
+          <CardDescription>Gestiona tus datos financieros</CardDescription>
         </CardHeader>
         <CardContent>
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle>Advertencia</AlertTitle>
             <AlertDescription>
-              Resetting your data will permanently delete all your transactions, budgets, and categories. This action
-              cannot be undone.
+              Restablecer tus datos eliminará permanentemente todas tus transacciones, presupuestos y categorías. Esta
+              acción no se puede deshacer.
             </AlertDescription>
           </Alert>
         </CardContent>
@@ -176,20 +176,20 @@ export default function SettingsPage() {
           <AlertDialog open={showResetConfirm} onOpenChange={setShowResetConfirm}>
             <AlertDialogTrigger asChild>
               <Button variant="destructive">
-                <Trash2 className="mr-2 h-4 w-4" /> Reset All Data
+                <Trash2 className="mr-2 h-4 w-4" /> Restablecer Todos los Datos
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogTitle>¿Estás absolutamente seguro?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete all your financial data and reset the
-                  application to its default state.
+                  Esta acción no se puede deshacer. Esto eliminará permanentemente todos tus datos financieros y
+                  restablecerá la aplicación a su estado predeterminado.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={handleReset}>Yes, reset everything</AlertDialogAction>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogAction onClick={handleReset}>Sí, restablecer todo</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
