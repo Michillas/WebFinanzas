@@ -5,7 +5,6 @@ import { Search, ArrowUpDown, TrendingUp, TrendingDown, Moon, Sun } from "lucide
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useTheme } from "next-themes"
 
 export default function CryptoPage() {
@@ -143,14 +142,6 @@ export default function CryptoPage() {
           </Button>
         </div>
       </div>
-
-      <Tabs defaultValue="all" className="mb-6">
-        <TabsList>
-          <TabsTrigger value="all">Todas las Criptomonedas</TabsTrigger>
-          <TabsTrigger value="gainers">Mayores Ganadoras</TabsTrigger>
-          <TabsTrigger value="losers">Mayores Perdedoras</TabsTrigger>
-        </TabsList>
-      </Tabs>
 
       <Card>
         <CardContent className="p-0">
