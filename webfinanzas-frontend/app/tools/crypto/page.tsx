@@ -122,8 +122,8 @@ export default function CryptoPage() {
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Cryptocurrency Market</h1>
-          <p className="text-muted-foreground mt-1">Top 50 cryptocurrencies by market capitalization</p>
+          <h1 className="text-3xl font-bold tracking-tight">Mercado de Criptomonedas</h1>
+          <p className="text-muted-foreground mt-1">Top 50 criptomonedas por capitalización de mercado</p>
         </div>
 
         <div className="flex items-center gap-4 w-full md:w-auto">
@@ -131,7 +131,7 @@ export default function CryptoPage() {
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="text"
-              placeholder="Search cryptocurrency..."
+              placeholder="Buscar criptomoneda..."
               className="pl-8"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -146,9 +146,9 @@ export default function CryptoPage() {
 
       <Tabs defaultValue="all" className="mb-6">
         <TabsList>
-          <TabsTrigger value="all">All Cryptocurrencies</TabsTrigger>
-          <TabsTrigger value="gainers">Top Gainers</TabsTrigger>
-          <TabsTrigger value="losers">Top Losers</TabsTrigger>
+          <TabsTrigger value="all">Todas las Criptomonedas</TabsTrigger>
+          <TabsTrigger value="gainers">Mayores Ganadoras</TabsTrigger>
+          <TabsTrigger value="losers">Mayores Perdedoras</TabsTrigger>
         </TabsList>
       </Tabs>
 
@@ -174,7 +174,7 @@ export default function CryptoPage() {
                       className="hover:bg-transparent p-0 font-medium"
                       onClick={() => handleSort("name")}
                     >
-                      Name
+                      Nombre
                       <ArrowUpDown className="ml-1 h-3 w-3 inline" />
                     </Button>
                   </th>
@@ -184,7 +184,7 @@ export default function CryptoPage() {
                       className="hover:bg-transparent p-0 font-medium"
                       onClick={() => handleSort("current_price")}
                     >
-                      Price
+                      Precio
                       <ArrowUpDown className="ml-1 h-3 w-3 inline" />
                     </Button>
                   </th>
@@ -204,7 +204,7 @@ export default function CryptoPage() {
                       className="hover:bg-transparent p-0 font-medium"
                       onClick={() => handleSort("market_cap")}
                     >
-                      Market Cap
+                      Capitalización de Mercado
                       <ArrowUpDown className="ml-1 h-3 w-3 inline" />
                     </Button>
                   </th>
@@ -214,11 +214,11 @@ export default function CryptoPage() {
                       className="hover:bg-transparent p-0 font-medium"
                       onClick={() => handleSort("total_volume")}
                     >
-                      Volume (24h)
+                      Volumen (24h)
                       <ArrowUpDown className="ml-1 h-3 w-3 inline" />
                     </Button>
                   </th>
-                  <th className="text-right p-4 font-medium text-sm hidden xl:table-cell">Last 7 Days</th>
+                  <th className="text-right p-4 font-medium text-sm hidden xl:table-cell">Últimos 7 Días</th>
                 </tr>
               </thead>
               <tbody>
@@ -283,7 +283,7 @@ export default function CryptoPage() {
                 ) : (
                   <tr>
                     <td colSpan={7} className="p-4 text-center">
-                      No cryptocurrencies found matching your search.
+                      No se encontraron criptomonedas que coincidan con tu búsqueda.
                     </td>
                   </tr>
                 )}
@@ -294,7 +294,7 @@ export default function CryptoPage() {
       </Card>
 
       <div className="mt-4 text-center text-sm text-muted-foreground">
-        Data provided by CoinGecko API • Updated every minute
+        Datos proporcionados por la API de CoinGecko • Actualizado cada minuto
       </div>
     </div>
   )
@@ -302,7 +302,7 @@ export default function CryptoPage() {
 
 function MiniChart({ data, isPositive }: { data: number[]; isPositive: boolean }) {
   if (!data || data.length === 0) {
-    return <div className="h-10 w-full flex items-center justify-center">No data</div>
+    return <div className="h-10 w-full flex items-center justify-center">Sin datos</div>
   }
 
   // Normalize data for the mini chart
