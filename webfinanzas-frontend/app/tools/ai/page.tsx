@@ -1,9 +1,7 @@
 "use client";
 
 import type React from "react";
-
 import { useState, useEffect, useRef } from "react";
-import { useChat } from "ai/react";
 import {
   Sparkles,
   Send,
@@ -33,68 +31,84 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { financialPrompts } from "@/lib/financial-prompts";
 
 export default function AiPage() {
-  const [apiKey, setApiKey] = useState<string>("");
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [messages, setMessages] = useState<
+    { id: string; role: "user" | "assistant"; content: string }[]
+  >([
+    {
+      id: "1",
+      role: "assistant",
+      content:
+        "¡Hola! Soy tu asistente financiero IA. ¿Cómo puedo ayudarte a gestionar tus finanzas hoy?",
+    },
+  ]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  const {
-    messages,
-    input,
-    handleInputChange,
-    handleSubmit,
-    isLoading,
-    error,
-    append,
-    setInput,
-  } = useChat({
-    api: "/api/chat",
-    headers: apiKey
-      ? {
-          "x-api-key": apiKey,
-        }
-      : undefined,
-    initialMessages: [
-      {
-        id: "1",
-        role: "assistant",
-        content:
-          "¡Hola! Soy tu asistente financiero IA. ¿Cómo puedo ayudarte a gestionar tus finanzas hoy?",
+  const openai = async (messages: { role: "user" | "assistant"; content: string }[]) => {
+    const response = await fetch("/api/ai", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    ],
-    onError: (error) => {
-      console.error("Error de chat:", error);
-    },
-  });
+      body: JSON.stringify({
+        model: "deepseek/deepseek-chat-v3-0324:free",
+        messages,
+      }),
+    });
+  
+    if (!response.ok) {
+      throw new Error("Error fetching AI response");
+    }
+  
+    const data = await response.json();
+    return data;
+  };
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.trim()) return;
-
-    if (!apiKey) {
-      const userMessage = {
+  
+    const userMessage = {
+      id: Date.now().toString(),
+      role: "user" as const,
+      content: input,
+    };
+  
+    setMessages((prev) => [...prev, userMessage]);
+    setInput("");
+    setIsLoading(true);
+    setError(null);
+  
+    try {
+      const updatedMessages: { role: "user" | "assistant"; content: string }[] = [
+        ...messages.map(({ id, ...rest }) => rest),
+        { role: "user", content: input },
+      ];
+  
+      const completion = await openai(updatedMessages);
+  
+      const assistantMessage = {
         id: Date.now().toString(),
-        role: "user" as const,
-        content: input,
-      };
-      const noticeMessage = {
-        id: (Date.now() + 1).toString(),
         role: "assistant" as const,
-        content:
-          "Por favor, añade tu clave API de OpenAI en la configuración para obtener respuestas de IA.",
+        content: completion.choices?.[0]?.message?.content ?? "No se recibió respuesta.",
       };
-
-      append(userMessage);
-      setTimeout(() => append(noticeMessage), 500);
-      handleInputChange({
-        target: { value: "" },
-      } as React.ChangeEvent<HTMLInputElement>);
-    } else {
-      handleSubmit(e);
+  
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (err) {
+      console.error("Error en la respuesta de IA:", err);
+      setError(err as Error);
+    } finally {
+      setIsLoading(false);
     }
   };
+  
 
   const handlePromptClick = (promptText: string) => {
     setInput(promptText);
@@ -105,20 +119,6 @@ export default function AiPage() {
       inputElement.focus();
     }
   };
-
-  useEffect(() => {
-    const storedApiKey = localStorage.getItem("openai-api-key");
-    if (storedApiKey) {
-      setApiKey(storedApiKey);
-    }
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted && apiKey) {
-      localStorage.setItem("openai-api-key", apiKey);
-    }
-  }, [apiKey, mounted]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -153,15 +153,12 @@ export default function AiPage() {
                 className="flex-1 overflow-y-auto p-4 space-y-4"
                 onScroll={handleScroll}
               >
-                {!apiKey && (
-                  <div className="flex items-center gap-2 p-3 mb-4 rounded-md bg-amber-500/10 text-amber-400 text-sm border border-amber-500/20">
-                    <AlertCircle className="h-4 w-4 flex-shrink-0" />
-                    <p>
-                      No hay clave API configurada. Añade tu clave API de OpenAI
-                      en la configuración para obtener respuestas de IA.
-                    </p>
-                  </div>
-                )}
+                <div className="flex items-center gap-2 p-3 mb-4 rounded-md bg-amber-500/10 text-amber-400 text-sm border border-amber-500/20">
+                  <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                  <p>
+                    No son consejos financieros. Usa la información bajo tu propio riesgo.
+                  </p>
+                </div>
 
                 {messages.map((message) => (
                   <div
@@ -244,10 +241,10 @@ export default function AiPage() {
               )}
 
               <div className="p-3 border-t border-gray-800 bg-gray-900/50">
-                <form onSubmit={onSubmit} className="flex gap-2 items-center">
+                <form onSubmit={handleSubmit} className="flex gap-2 items-center">
                   <Input
                     value={input}
-                    onChange={handleInputChange}
+                    onChange={(e) => setInput(e.target.value)}
                     placeholder="Pregunta sobre tus finanzas..."
                     className="flex-1 text-sm bg-gray-800 border-gray-700 focus-visible:ring-emerald-500/20 focus-visible:ring-offset-0"
                     disabled={isLoading}
