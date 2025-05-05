@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "frontend": "cd webfinanzas-frontend && npm run dev",
+    "backend": "\"cd webfinanzas-backend && ./mvnw spring-boot:run\""
+  }
+}
