@@ -1,10 +1,11 @@
 {
   "devDependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3"
   },
   "scripts": {
     "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
     "frontend": "cd webfinanzas-frontend && npm run dev",
-    "backend": "\"cd webfinanzas-backend && mvnw.cmd spring-boot:run\""
+    "backend": "cross-env-shell \"cd webfinanzas-backend && ./mvnw spring-boot:run || mvnw.cmd spring-boot:run\""
   }
 }
