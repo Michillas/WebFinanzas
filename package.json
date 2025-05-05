@@ -5,6 +5,6 @@
   "scripts": {
     "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
     "frontend": "cd webfinanzas-frontend && npm run dev",
-    "backend": "\"cd webfinanzas-backend && ./mvnw spring-boot:run\""
+    "backend": "\"cd webfinanzas-backend && mvnw.cmd spring-boot:run\""
   }
 }
