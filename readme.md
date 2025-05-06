@@ -9,17 +9,17 @@
 
 ## <p align="center">Inicia el proyecto en tu máquina</p>
 > 
-> ## 1º Clona el repositorio
+> ## 1. Clona el repositorio
 > ```bash
 > git clone https://github.com/Michillas/WebFinanzas-Cripto-y-IA.git
 > ```
 >
-> ## 2º Crea la base de datos en MySQL
+> ## 2. Crea la base de datos en MySQL
 > ```sql
 > CREATE DATABASE webfinanzas;
 > ```
 >
-> ## 3º Configura el backend (Spring Boot)
+> ## 3. Configura el backend (Spring Boot)
 > ### application.properties:
 > ```properties
 > spring.datasource.url=jdbc:mysql://localhost:3306/webfinanzas
@@ -27,15 +27,34 @@
 > spring.datasource.password=tu_contraseña
 > ```
 >
-> ## 4º Inicia el backend (Spring Boot)
+> ## 4. Inicia el backend (Spring Boot)
 > ```bash
 > ./mvnw spring-boot:run
 > # La API estará disponible en http://localhost:8080/
 > ```
 >
-> ## 5º Inicia el frontend (Next)
+> ## 5. Inicia el frontend (Next)
 > ```bash
 > npm install
 > npm run dev
 > # Accede desde http://localhost:5173
+> ```
+>
+
+## Iniciar con Kubernetes y Docker
+> ## 1. Compilar imágenes localmente
+> ```bash
+> docker build -t frontend:latest ./frontend
+> docker build -t backend:latest ./backend
+> ```
+>
+> ## 2. Cargar imágenes a Minikube
+> ```bash
+> minikube image load frontend:latest
+> minikube image load backend:latest
+> ```
+>
+> ## 3. Aplicar los recursos
+> ```bash
+> kubectl apply -f kubernetes/
 > ```
