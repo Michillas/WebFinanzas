@@ -44,8 +44,8 @@
 ## Iniciar con Kubernetes y Docker
 > ## 1. Compilar imágenes localmente
 > ```bash
-> docker build -t frontend:latest ./frontend
-> docker build -t backend:latest ./backend
+> docker build -t frontend:latest ./webfinanzas-frontend
+> docker build -t backend:latest ./webfinanzas-backend
 > ```
 >
 > ## 2. Cargar imágenes a Minikube
