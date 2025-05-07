@@ -5,7 +5,6 @@ import { Search, ArrowUpDown, TrendingUp, TrendingDown, Moon, Sun } from "lucide
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { useTheme } from "next-themes"
 
 export default function CryptoPage() {
   const [cryptoData, setCryptoData] = useState<Array<{ 
@@ -23,7 +22,6 @@ export default function CryptoPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
   const [sortConfig, setSortConfig] = useState<{ key: keyof typeof cryptoData[number], direction: "ascending" | "descending" }>({ key: "market_cap_rank", direction: "ascending" })
-  const { setTheme, theme } = useTheme()
 
   useEffect(() => {
     const fetchCryptoData = async () => {
@@ -113,10 +111,6 @@ export default function CryptoPage() {
     return percentage ? percentage.toFixed(2) + "%" : "N/A"
   }
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
-
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -136,10 +130,6 @@ export default function CryptoPage() {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-
-          <Button variant="outline" size="icon" onClick={toggleTheme}>
-            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </Button>
         </div>
       </div>
 
