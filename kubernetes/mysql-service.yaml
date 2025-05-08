@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mysql-service
 spec:
   selector:
     app: mysql
   ports:
-    - port: 3306
+    - protocol: TCP
+      port: 3306  # Expose the MySQL port
       targetPort: 3306
