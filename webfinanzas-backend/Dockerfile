@@ -4,12 +4,8 @@ FROM maven:3.9.6-eclipse-temurin-21 AS builder
 # Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copiar el archivo pom.xml y descargar las dependencias (Maven)
-COPY pom.xml .
-RUN mvn dependency:go-offline
-
-# Copiar el código fuente
-COPY src ./src
+# Copiar todos los archivos del proyecto
+COPY . .
 
 # Construir el paquete JAR con Maven
 RUN mvn clean package -DskipTests
@@ -17,14 +13,14 @@ RUN mvn clean package -DskipTests
 # Etapa 2: Producción (Run)
 FROM eclipse-temurin:21-jre-jammy
 
-# Copiar el archivo JAR desde la etapa de construcción
-COPY --from=builder /app/target/my-app.jar /usr/app/my-app.jar
-
-# Establecer el directorio de trabajo
+# Crear el directorio de trabajo en la imagen final
 WORKDIR /usr/app
 
-# Exponer el puerto que la aplicación usará
+# Copiar el JAR generado desde la etapa de build
+COPY --from=builder /app/target/*.jar ./my-app.jar
+
+# Exponer el puerto que usa la app
 EXPOSE 8080
 
-# Comando para ejecutar el archivo JAR
+# Comando de arranque
 ENTRYPOINT ["java", "-jar", "my-app.jar"]
