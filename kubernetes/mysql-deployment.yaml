@@ -19,7 +19,7 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               value: ""  # Empty password for root
             - name: MYSQL_ALLOW_EMPTY_PASSWORD
-              value: yes
+              value: "yes"
             - name: MYSQL_DATABASE
               value: "webfinanzas"  # Create webfinanzas database
           ports:
