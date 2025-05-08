@@ -15,6 +15,21 @@ spec:
       containers:
         - name: backend
           image: backend:latest
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent  # Changed from Never to IfNotPresent
           ports:
             - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://mysql-service:3306/webfinanzas?allowPublicKeyRetrieval=true&useSSL=false"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "root"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "password"  # Match with MySQL root password
+          # Using TCP socket check instead of HTTP since Actuator is not available
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          # You could also create a simple health endpoint in your application
+          # and use httpGet instead with that custom endpoint
