@@ -1,3 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-init-config
+data:
+  init.sql: |
+    ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+    FLUSH PRIVILEGES;
+    
+    -- Create the database if it doesn't exist
+    CREATE DATABASE IF NOT EXISTS webfinanzas;
+    
+    -- Additional setup can go here
+    -- CREATE TABLE statements, etc.
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,16 +32,20 @@ spec:
       containers:
         - name: mysql
           image: mysql:8.0
+          args:
+            - --default-authentication-plugin=mysql_native_password
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "password"  # Use a real password or a secret reference
+              value: "password"  # In production, use a Kubernetes Secret
             - name: MYSQL_DATABASE
-              value: "webfinanzas"  
+              value: "webfinanzas"
           ports:
             - containerPort: 3306
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
+            - name: mysql-init-config
+              mountPath: /docker-entrypoint-initdb.d
           readinessProbe:  # Add readiness probe
             tcpSocket:
               port: 3306
@@ -35,10 +56,21 @@ spec:
               port: 3306
             initialDelaySeconds: 30
             periodSeconds: 10
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
             claimName: mysql-pvc
+        - name: mysql-init-config
+          configMap:
+            name: mysql-init-config
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
