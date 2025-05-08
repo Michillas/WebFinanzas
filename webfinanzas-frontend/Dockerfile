@@ -1,24 +1,17 @@
-# Etapa 1: Construcción de la aplicación (Build)
-FROM node:22 AS builder
+FROM node:22
 
 WORKDIR /app
 
-# Copiar los archivos de package.json y package-lock.json (si existe)
+# Instala dependencias
 COPY package*.json ./
 RUN npm install
 
-# Copiar todo el código fuente y construir la aplicación
+# Copia el código y construye la app
 COPY . .
 RUN npm run build
 
-# Etapa 2: Producción (Nginx)
-FROM nginx:alpine
+# Expón el puerto 3000 (el default de Next.js)
+EXPOSE 3000
 
-# Copiar los archivos construidos desde la etapa anterior
-COPY --from=builder /app/.next /usr/share/nginx/html
-
-# Exponer el puerto en el que Nginx va a escuchar
-EXPOSE 80
-
-# Comando para iniciar Nginx en el contenedor
-CMD ["nginx", "-g", "daemon off;"]
+# Ejecuta Next.js en modo producción
+CMD ["npm", "start"]
