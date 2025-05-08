@@ -49,6 +49,7 @@
 > ```
 >
 > ## 2. Cargar imágenes a Minikube
+> (Asegurate de que esta minikube encendido "minikube start")
 > ```bash
 > minikube image load frontend:latest
 > minikube image load backend:latest
