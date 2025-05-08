@@ -3,11 +3,16 @@
 
 ### <p align="center">Made with</p>
 
-<p align="center"><img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white"></img> <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"></img> <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"></img></p>
+<p align="center"><img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white"></img> <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"></img> <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"></img> <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white"></img> <img src="https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white"></img></p>
 
-<hr>
+## <p align="center">https://webfinanzas.vercel.app/</p>
 
-## <p align="center">Inicia el proyecto en tu máquina</p>
+## Inicia el proyecto en tu máquina
+Requisitos:
+ - Node.js 22 LTS
+ - JDK 21
+ - MySQL
+
 > 
 > ## 1. Clona el repositorio
 > ```bash
@@ -41,7 +46,11 @@
 > ```
 >
 
-## Iniciar con Kubernetes y Docker
+## Inicia con Kubernetes y Docker
+Requisitos:
+ - Docker
+ - Minikube
+
 > ## 1. Compilar imágenes localmente
 > ```bash
 > docker build -t frontend:latest ./webfinanzas-frontend
