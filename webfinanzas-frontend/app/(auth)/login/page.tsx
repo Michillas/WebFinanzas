@@ -8,14 +8,14 @@ import { Label } from "@/components/ui/label"
 import { Mail, Lock, Github } from "lucide-react"
 
 export default function LoginPage() {
-    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
     const handleLogin = async () => {
         const response = await fetch("http://localhost:8080/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username: email, password }),
+            body: JSON.stringify({ username, password }),
         })
 
         if (response.ok) {
@@ -33,21 +33,19 @@ export default function LoginPage() {
             <Card className="w-full max-w-md">
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl font-bold">Iniciar sesión</CardTitle>
-                    <CardDescription>Introduce tu correo electrónico y contraseña para acceder a tu cuenta</CardDescription>
+                    <CardDescription>Introduce tu usuario y contraseña para acceder a tu cuenta</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
-                        <Label htmlFor="email">Correo electrónico</Label>
+                        <Label htmlFor="name">Nombre de usuario</Label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-muted-foreground">
                                 <Mail className="h-4 w-4" />
                             </div>
                             <Input
-                                id="email"
-                                type="email"
-                                placeholder="m@example.com"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                id="name"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                                 className="pl-10"
                             />
                         </div>
