@@ -7,6 +7,9 @@
 
 ## <p align="center">https://webfinanzas.vercel.app/</p>
 
+<img alt="Screenshot" src="https://github.com/user-attachments/assets/0ee18442-90f0-424f-af43-08965a8776db"/>
+
+
 ## Inicia el proyecto en tu máquina
 Requisitos:
  - Node.js 22 LTS
