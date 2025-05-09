@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Mail, Lock, User, Github } from "lucide-react"
+import { Mail, Lock, User } from "lucide-react"
 
 export default function RegisterPage() {
   const [username, setUsername] = useState("")

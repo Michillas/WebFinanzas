@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Mail, Lock, Github } from "lucide-react"
+import { User, Lock } from "lucide-react"
 
 export default function LoginPage() {
     const [username, setUsername] = useState("")
@@ -40,7 +40,7 @@ export default function LoginPage() {
                         <Label htmlFor="name">Nombre de usuario</Label>
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-muted-foreground">
-                                <Mail className="h-4 w-4" />
+                                <User className="h-4 w-4" />
                             </div>
                             <Input
                                 id="name"
