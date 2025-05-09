@@ -31,8 +31,7 @@ public class AuthController {
 {
   "username": "johndoe",
   "password": "password123",
-  "firstname": "John",
-  "lastname": "Doe",
+  "email": "John@test",
   "country": "Spain"
 }
 */
