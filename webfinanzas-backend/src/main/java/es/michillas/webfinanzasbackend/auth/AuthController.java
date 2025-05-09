@@ -25,3 +25,14 @@ public class AuthController {
     }
 
 }
+
+// Petición
+/* 
+{
+  "username": "johndoe",
+  "password": "password123",
+  "firstname": "John",
+  "lastname": "Doe",
+  "country": "Spain"
+}
+*/
