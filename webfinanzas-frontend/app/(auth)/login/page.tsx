@@ -20,8 +20,9 @@ export default function LoginPage() {
 
         if (response.ok) {
             const data = await response.json()
-            alert("¡Inicio de sesión exitoso!")
-            console.log("Token:", data.token) // Save or use the token as needed
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("username", username);
+            window.location.href = '/'
         } else {
             const errorData = await response.json()
             alert(`Error: ${errorData.message || "No se pudo iniciar sesión"}`)
