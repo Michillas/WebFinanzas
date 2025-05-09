@@ -1,17 +1,43 @@
-FROM node:22
+# Use Node.js LTS
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Instala dependencias
+# Install dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
-# Copia el código y construye la app
+# Copy source
 COPY . .
+
+# Set proper next.config.js with standalone output
+RUN echo 'module.exports = { output: "standalone" };' > next.config.js
+
+# Build the application
 RUN npm run build
 
-# Expón el puerto 3000 (el default de Next.js)
+# Production image, copy all the files and run next
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+
+# Don't run production as root
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+USER nextjs
+
+# Copy necessary files from builder
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+
+# Expose the port
 EXPOSE 3000
 
-# Ejecuta Next.js en modo producción
-CMD ["npm", "start"]
+# Start the application
+CMD ["node", "server.js"]

@@ -68,3 +68,10 @@ Requisitos:
 > ```bash
 > kubectl apply -f kubernetes/
 > ```
+>
+> ## 4. Acceder al microservicio Frontend
+> ```bash
+> minikube service frontend-service
+> ```
+> Esto abrirá una URL local para acceder al frontend desplegado en Minikube.
+
