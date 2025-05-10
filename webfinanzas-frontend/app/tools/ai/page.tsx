@@ -3,14 +3,10 @@
 import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import {
-  Sparkles,
   Send,
-  Settings,
   ArrowDown,
   Loader2,
   AlertCircle,
-  ChevronDown,
-  ChevronUp,
   DollarSign,
   PiggyBank,
   TrendingUp,
@@ -30,10 +26,10 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { financialPrompts } from "@/lib/financial-prompts";
 
+import ReactMarkdown from "react-markdown";
+
 export default function AiPage() {
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [messages, setMessages] = useState<
     { id: string; role: "user" | "assistant"; content: string }[]
   >([
@@ -150,7 +146,7 @@ export default function AiPage() {
             <div className="w-full h-full flex flex-col rounded-lg border border-gray-800 bg-gray-900/30 backdrop-blur-sm overflow-hidden">
               <div
                 ref={chatContainerRef}
-                className="flex-1 overflow-y-auto p-4 space-y-4"
+                className="flex-1 max-h-[75vh] overflow-y-auto p-4 space-y-4"
                 onScroll={handleScroll}
               >
                 <div className="flex items-center gap-2 p-3 mb-4 rounded-md bg-amber-500/10 text-amber-400 text-sm border border-amber-500/20">
@@ -188,7 +184,48 @@ export default function AiPage() {
                           : "bg-gray-800/50 border border-gray-700/50 text-gray-200"
                       )}
                     >
-                      <p className="whitespace-pre-wrap">{message.content}</p>
+                      {message.role === "assistant" ? (
+                          <ReactMarkdown
+                            components={{
+                              h1: ({ node, ...props }) => <h1 className="text-2xl font-bold mt-4 mb-2" {...props} />,
+                              h2: ({ node, ...props }) => <h2 className="text-xl font-semibold mt-4 mb-2" {...props} />,
+                              h3: ({ node, ...props }) => <h3 className="text-lg font-semibold mt-4 mb-2" {...props} />,
+                              p: ({ node, ...props }) => <p className="my-1 leading-relaxed" {...props} />,
+                              ul: ({ node, ...props }) => <ul className="list-disc pl-5 my-2" {...props} />,
+                              ol: ({ node, ...props }) => <ol className="list-decimal pl-5 my-2" {...props} />,
+                              li: ({ node, ...props }) => <li className="mb-1" {...props} />,
+                              blockquote: ({ node, ...props }) => (
+                                <blockquote className="border-l-4 border-gray-500 pl-4 italic text-gray-400 my-4" {...props} />
+                              ),
+                              code: ({ node, ...props }) => (
+                                <code className="bg-gray-800 text-green-400 px-1 py-0.5 rounded text-sm" {...props} />
+                              ),
+                              pre: ({ node, ...props }) => (
+                                <pre className="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto my-4" {...props} />
+                              ),
+                              hr: () => <hr className="my-6 border-t border-gray-700" />,
+                              table: ({ node, ...props }) => (
+                                <table className="table-auto w-full border-collapse my-4" {...props} />
+                              ),
+                              thead: ({ node, ...props }) => (
+                                <thead className="bg-gray-700 text-left text-gray-300" {...props} />
+                              ),
+                              tbody: ({ node, ...props }) => <tbody {...props} />,
+                              tr: ({ node, ...props }) => <tr className="border-b border-gray-700" {...props} />,
+                              th: ({ node, ...props }) => (
+                                <th className="px-4 py-2 font-semibold text-sm" {...props} />
+                              ),
+                              td: ({ node, ...props }) => (
+                                <td className="px-4 py-2 text-sm text-gray-300" {...props} />
+                              ),
+                            }}
+                          >
+                            {message.content}
+                          </ReactMarkdown>
+                      ) : (
+                        <p className="whitespace-pre-wrap">{message.content}</p>
+                      )}
+
                     </div>
 
                     {message.role === "user" && (
