@@ -1,9 +1,12 @@
 "use client"
 
+
+import Link from "next/link";
 import { SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetFooter } from "@/components/ui/sheet";
 import { Separator } from "@radix-ui/react-separator";
-import { Menu, Link, Banknote } from "lucide-react";
+import { Menu, Banknote, User, SquarePlus } from "lucide-react";
 import { Sheet } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import React from "react";
 import { ToggleTheme } from "../../toogle-theme";
 
@@ -35,6 +38,34 @@ export const MobileNavBar = () => {
               </SheetHeader>
 
               <div className="flex flex-col gap-2">
+              <Button
+                asChild
+                variant="ghost"
+                className="w-full justify-start"
+              >
+                <Link
+                  href="/login"
+                >
+                  <div className="flex gap-2">
+                    <User className="size-5" />
+                    <span>Iniciar Sesión</span>
+                  </div>
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="ghost"
+                className="w-full justify-start"
+              >
+                <Link
+                  href="/register"
+                >
+                  <div className="flex gap-2">
+                    <SquarePlus className="size-5" />
+                    <span>Registrarse</span>
+                  </div>
+                </Link>
+              </Button>
               </div>
             </div>
 
