@@ -28,26 +28,26 @@ export default function Page() {
         <div className="flex min-h-screen flex-col">
           <main className="flex-1 container py-6">
             <Tabs defaultValue="dashboard" className="space-y-4">
-              <TabsList className="grid grid-cols-5 w-full max-w-3xl mx-auto">
+              <TabsList className="grid md:grid-cols-5 grid-cols-1 w-full max-w-3xl mx-auto md:h-10 h-30">
                 <TabsTrigger value="dashboard">
                   <HomeIcon className="h-4 w-4 mr-2" />
-                  Inicio
+                  <div>Inicio</div>
                 </TabsTrigger>
                 <TabsTrigger value="transactions">
                   <ArrowUpCircle className="h-4 w-4 mr-2" />
-                  Transacciones
+                  <div>Transacciones</div>
                 </TabsTrigger>
                 <TabsTrigger value="budgets">
                   <Wallet className="h-4 w-4 mr-2" />
-                  Presupuestos
+                  <div>Presupuestos</div>
                 </TabsTrigger>
                 <TabsTrigger value="reports">
                   <PieChart className="h-4 w-4 mr-2" />
-                  Graficos
+                  <div>Graficos</div>
                 </TabsTrigger>
                 <TabsTrigger value="settings">
                   <Settings className="h-4 w-4 mr-2" />
-                  Ajustes
+                  <div>Ajustes</div>
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="dashboard" className="space-y-4">
