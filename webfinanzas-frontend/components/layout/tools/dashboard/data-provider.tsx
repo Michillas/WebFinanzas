@@ -199,27 +199,6 @@ const defaultData: FinanceData = {
       spent: 24.98,
       period: "monthly",
     },
-    {
-      id: "bdg06",
-      category: "Alquiler",
-      amount: 950,
-      spent: 950,
-      period: "monthly",
-    },
-    {
-      id: "bdg07",
-      category: "Compras",
-      amount: 150,
-      spent: 82.30,
-      period: "monthly",
-    },
-    {
-      id: "bdg08",
-      category: "Utiles",
-      amount: 200,
-      spent: 150,
-      period: "monthly",
-    },
   ],
   categories: [
     { id: "cat01", name: "Salario", color: "#4CAF50" },
