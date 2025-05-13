@@ -30,11 +30,11 @@ export default function RegisterPage() {
     })
 
     if (response.ok) {
-      setMessage("¡Registro exitoso!")
+      setMessage("Cuenta creada correctamente, ahora puedes iniciar sesión")
       setMessageType("success")
     } else {
       const data = await response.json()
-      setMessage(`Error: ${data.message || "No se pudo registrar"}`)
+      setMessage(`Error: ${data.message || "No se pudo registrar la cuenta"}`)
       setMessageType("error")
     }
   }
@@ -90,13 +90,13 @@ export default function RegisterPage() {
               <a href="#" className="text-primary hover:underline">términos y condiciones</a>
             </label>
           </div>
+          {message && (
+          <p className={`text-sm mt-1 ${messageType === "error" ? "text-red-500" : "text-green-500"}`}>
+            {message}
+          </p>
+          )}
         </CardContent>
         <CardFooter className="flex flex-col space-y-2">
-          {message && (
-            <p className={`text-sm ${messageType === "error" ? "text-red-500" : "text-green-500"}`}>
-              {message}
-            </p>
-          )}
           <Button className="w-full" onClick={handleRegister}>Registrarse</Button>
         </CardFooter>
       </Card>
