@@ -5,35 +5,38 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useFinanceData } from "@/components/layout/tools/dashboard/data-provider"
 import { formatCurrency } from "@/lib/utils"
-import { PieChart, LineChart } from "@/components/layout/tools/dashboard/charts"
+import { 
+  PieChart, 
+  LineChart, 
+  BarChart, 
+  DonutChart, 
+  AreaChart 
+} from "@/components/layout/tools/dashboard/charts"
+import { TrendingUp, TrendingDown, ArrowRight, PiggyBank } from "lucide-react"
 
 export default function Reports() {
   const { data } = useFinanceData()
   const [period, setPeriod] = useState<"week" | "month" | "year">("month")
+  const [chartType, setChartType] = useState<"line" | "area">("line")
 
-  // Memoize filtered transactions to prevent unnecessary recalculations
   const filteredTransactions = useMemo(() => {
-    // Get current date
     const currentDate = new Date()
 
     return data.transactions.filter((transaction) => {
       const transactionDate = new Date(transaction.date)
 
       if (period === "week") {
-        // Get start of current week (Sunday)
         const startOfWeek = new Date(currentDate)
         startOfWeek.setDate(currentDate.getDate() - currentDate.getDay())
         startOfWeek.setHours(0, 0, 0, 0)
 
         return transactionDate >= startOfWeek
       } else if (period === "month") {
-        // Check if transaction is in current month
         return (
           transactionDate.getMonth() === currentDate.getMonth() &&
           transactionDate.getFullYear() === currentDate.getFullYear()
         )
       } else if (period === "year") {
-        // Check if transaction is in current year
         return transactionDate.getFullYear() === currentDate.getFullYear()
       }
 
@@ -41,7 +44,6 @@ export default function Reports() {
     })
   }, [data.transactions, period])
 
-  // Memoize income and expenses calculations
   const income = useMemo(
     () => filteredTransactions.filter((t) => t.type === "income").reduce((sum, t) => sum + t.amount, 0),
     [filteredTransactions],
@@ -52,9 +54,12 @@ export default function Reports() {
     [filteredTransactions],
   )
 
-  // Memoize chart data calculations
+  const savingsPercentage = useMemo(() => {
+    if (income === 0) return 0;
+    return Math.round(((income - expenses) / income) * 100);
+  }, [income, expenses]);
+
   const pieChartData = useMemo(() => {
-    // Group expenses by category for pie chart
     const expensesByCategory = filteredTransactions
       .filter((t) => t.type === "expense")
       .reduce(
@@ -69,7 +74,6 @@ export default function Reports() {
         {} as Record<string, number>,
       )
 
-    // Prepare data for pie chart
     return Object.entries(expensesByCategory).map(([category, amount]) => ({
       name: category,
       value: amount,
@@ -77,9 +81,7 @@ export default function Reports() {
     }))
   }, [filteredTransactions, data.categories])
 
-  // Memoize line chart data
   const lineChartData = useMemo(() => {
-    // Group transactions by date for line chart
     const transactionsByDate = filteredTransactions.reduce(
       (acc, transaction) => {
         const date = new Date(transaction.date).toLocaleDateString()
@@ -96,7 +98,6 @@ export default function Reports() {
       {} as Record<string, { income: number; expense: number }>,
     )
 
-    // Prepare data for line chart
     return Object.entries(transactionsByDate)
       .sort((a, b) => new Date(a[0]).getTime() - new Date(b[0]).getTime())
       .map(([date, values]) => ({
@@ -106,11 +107,26 @@ export default function Reports() {
       }))
   }, [filteredTransactions])
 
+  const topExpensesData = useMemo(() => {
+    const categoryTotals = pieChartData.sort((a, b) => b.value - a.value).slice(0, 5);
+    return categoryTotals.map(item => ({
+      label: item.name,
+      value: item.value,
+      color: item.color
+    }));
+  }, [pieChartData]);
+
+  const periodDescriptions = {
+    week: "Esta Semana",
+    month: "Este Mes",
+    year: "Este Año"
+  };
+
   return (
-    <div className="space-y-4">
-      <div className="flex justify-between items-center">
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h2 className="text-3xl font-bold tracking-tight">Informes</h2>
-        <Tabs value={period} onValueChange={(value) => setPeriod(value as any)} className="w-[400px]">
+        <Tabs value={period} onValueChange={(value) => setPeriod(value as any)} className="w-full sm:w-[400px]">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="week">Esta Semana</TabsTrigger>
             <TabsTrigger value="month">Este Mes</TabsTrigger>
@@ -119,28 +135,39 @@ export default function Reports() {
         </Tabs>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle>Ingresos</CardTitle>
-            <CardDescription>Total de ingresos para el período</CardDescription>
+            <CardTitle className="flex items-center">
+              <TrendingUp className="w-4 h-4 mr-2 text-emerald-500" />
+              Ingresos
+            </CardTitle>
+            <CardDescription>Total {periodDescriptions[period].toLowerCase()}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-emerald-500">{formatCurrency(income, data.settings.currency)}</div>
           </CardContent>
         </Card>
+        
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle>Gastos</CardTitle>
-            <CardDescription>Total de gastos para el período</CardDescription>
+            <CardTitle className="flex items-center">
+              <TrendingDown className="w-4 h-4 mr-2 text-rose-500" />
+              Gastos
+            </CardTitle>
+            <CardDescription>Total {periodDescriptions[period].toLowerCase()}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-rose-500">{formatCurrency(expenses, data.settings.currency)}</div>
           </CardContent>
         </Card>
+        
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle>Ahorros</CardTitle>
+            <CardTitle className="flex items-center">
+              <ArrowRight className="w-4 h-4 mr-2" />
+              Balance
+            </CardTitle>
             <CardDescription>Ingresos menos gastos</CardDescription>
           </CardHeader>
           <CardContent>
@@ -149,41 +176,106 @@ export default function Reports() {
             </div>
           </CardContent>
         </Card>
+        
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center">
+              <PiggyBank className="w-4 h-4 mr-2 text-blue-500" />
+              Tasa de Ahorro
+            </CardTitle>
+            <CardDescription>Porcentaje de ingresos ahorrados</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className={`text-2xl font-bold ${savingsPercentage >= 0 ? "text-blue-500" : "text-rose-500"}`}>
+              {savingsPercentage}%
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card className="col-span-1">
-          <CardHeader>
-            <CardTitle>Gastos por Categoría</CardTitle>
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card className="md:col-span-1">
+          <CardHeader className="space-y-0 pb-2">
+            <div className="flex justify-between items-center">
+              <CardTitle>Gastos por Categoría</CardTitle>
+              <Tabs value="pie" className="w-[120px]">
+                <TabsList className="h-8">
+                  <TabsTrigger value="pie" className="text-xs px-2">Pastel</TabsTrigger>
+                  <TabsTrigger value="donut" className="text-xs px-2">Anillo</TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
             <CardDescription>Cómo se distribuyen tus gastos</CardDescription>
           </CardHeader>
-          <CardContent className="h-[300px]">
+          <CardContent className="pt-2">
             {pieChartData.length > 0 ? (
-              <PieChart data={pieChartData} />
+              <DonutChart 
+                data={pieChartData} 
+                title="" 
+                description="" 
+              />
             ) : (
-              <div className="flex h-full items-center justify-center text-muted-foreground">
+              <div className="flex h-[300px] items-center justify-center text-muted-foreground">
                 No hay datos de gastos disponibles para este período
               </div>
             )}
           </CardContent>
         </Card>
 
-        <Card className="col-span-1">
-          <CardHeader>
-            <CardTitle>Ingresos vs Gastos</CardTitle>
+        <Card className="md:col-span-1">
+          <CardHeader className="space-y-0 pb-2">
+            <div className="flex justify-between items-center">
+              <CardTitle>Ingresos vs Gastos</CardTitle>
+              <Tabs 
+                value={chartType} 
+                onValueChange={(value) => setChartType(value as "line" | "area")} 
+                className="w-[120px]"
+              >
+                <TabsList className="h-8">
+                  <TabsTrigger value="line" className="text-xs px-2">Línea</TabsTrigger>
+                  <TabsTrigger value="area" className="text-xs px-2">Área</TabsTrigger>
+                </TabsList>
+              </Tabs>
+            </div>
             <CardDescription>Comparación a lo largo del tiempo</CardDescription>
           </CardHeader>
-          <CardContent className="h-[300px]">
+          <CardContent className="pt-2">
             {lineChartData.length > 0 ? (
-              <LineChart data={lineChartData} />
+              chartType === "line" ? (
+                <LineChart data={lineChartData} />
+              ) : (
+                <AreaChart 
+                  data={lineChartData} 
+                  title="" 
+                  description="" 
+                />
+              )
             ) : (
-              <div className="flex h-full items-center justify-center text-muted-foreground">
+              <div className="flex h-[300px] items-center justify-center text-muted-foreground">
                 No hay datos de transacciones disponibles para este período
               </div>
             )}
           </CardContent>
         </Card>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Principales Categorías de Gastos</CardTitle>
+          <CardDescription>Top 5 categorías con mayor gasto {periodDescriptions[period].toLowerCase()}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          {topExpensesData.length > 0 ? (
+            <div className="h-[300px]">
+              <BarChart data={topExpensesData} />
+            </div>
+          ) : (
+            <div className="flex h-[300px] items-center justify-center text-muted-foreground">
+              No hay datos de gastos disponibles para este período
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div>
   )
 }
