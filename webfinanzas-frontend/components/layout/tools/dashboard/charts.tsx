@@ -105,10 +105,6 @@ export function LineChart({ data }: any) {
 
   return (
     <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Income vs Expenses</CardTitle>
-        <CardDescription>Track your financial flow over time</CardDescription>
-      </CardHeader>
       <CardContent>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
@@ -135,7 +131,7 @@ export function LineChart({ data }: any) {
               <Line 
                 type="monotone" 
                 dataKey="income" 
-                name="Income"
+                name="Ingreso"
                 stroke="#10b981" 
                 activeDot={{ r: 8 }} 
                 strokeWidth={2}
@@ -143,7 +139,7 @@ export function LineChart({ data }: any) {
               <Line 
                 type="monotone" 
                 dataKey="expense" 
-                name="Expense"
+                name="Gasto"
                 stroke="#ef4444" 
                 strokeWidth={2}
               />
@@ -178,10 +174,6 @@ export function BarChart({ data }: any) {
 
   return (
     <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Category Analysis</CardTitle>
-        <CardDescription>Compare spending across categories</CardDescription>
-      </CardHeader>
       <CardContent>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
@@ -220,9 +212,6 @@ export function BarChart({ data }: any) {
   )
 }
 
-/**
- * Donut Chart Component using Recharts
- */
 interface DonutChartData {
   value: number;
   color: string;
@@ -335,7 +324,7 @@ export function AreaChart({ data, title = "Area Chart", description = "Data visu
               <Area 
                 type="monotone" 
                 dataKey="income" 
-                name="Income"
+                name="Ingreso"
                 stroke="#10b981" 
                 fillOpacity={1} 
                 fill="url(#colorIncome)" 
@@ -343,7 +332,7 @@ export function AreaChart({ data, title = "Area Chart", description = "Data visu
               <Area 
                 type="monotone" 
                 dataKey="expense" 
-                name="Expense"
+                name="Gasto"
                 stroke="#ef4444" 
                 fillOpacity={1} 
                 fill="url(#colorExpense)" 
