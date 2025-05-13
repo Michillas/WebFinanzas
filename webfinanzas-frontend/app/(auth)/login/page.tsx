@@ -26,7 +26,7 @@ export default function LoginPage() {
             localStorage.setItem("username", username)
             window.location.href = "/"
         } else {
-            setError("No se pudo iniciar sesión. Verifica tus credenciales.")
+            setError("Error al iniciar sesión, datos incorrectos.")
         }
     }
 
@@ -38,7 +38,6 @@ export default function LoginPage() {
                     <CardDescription>Introduce tu usuario y contraseña para acceder a tu cuenta</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    {error && <p className="text-red-500 text-sm">{error}</p>}
                     <div className="space-y-2">
                         <Label htmlFor="name">Nombre de usuario</Label>
                         <div className="relative">
@@ -73,6 +72,7 @@ export default function LoginPage() {
                             />
                         </div>
                     </div>
+                    {error && <p className="text-red-500 text-sm">{error}</p>}
                 </CardContent>
                 <CardFooter>
                     <Button className="w-full" onClick={handleLogin}>
