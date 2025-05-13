@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { createContext, useContext, useEffect, useState, useRef } from "react"
 
 export type Transaction = {
@@ -41,66 +40,200 @@ type FinanceData = {
   settings: Settings
 }
 
-// Default data
 const defaultData: FinanceData = {
   transactions: [
     {
-      id: "1",
-      date: new Date().toISOString(),
-      amount: 2500,
+      id: "tx001",
+      date: "2025-05-01T09:15:23.000Z",
+      amount: 2780.45,
       category: "Salario",
-      description: "Monthly salario",
+      description: "Salario mensual Mayo",
       type: "income",
     },
     {
-      id: "2",
-      date: new Date().toISOString(),
-      amount: 45.99,
-      category: "Alimentos",
-      description: "Weekly compras",
+      id: "tx002",
+      date: "2025-05-03T15:42:17.000Z",
+      amount: 950.00,
+      category: "Alquiler",
+      description: "Alquiler Mayo",
       type: "expense",
     },
     {
-      id: "3",
-      date: new Date().toISOString(),
-      amount: 9.99,
+      id: "tx003",
+      date: "2025-05-04T12:30:45.000Z",
+      amount: 89.95,
+      category: "Alimentos",
+      description: "Mercadona",
+      type: "expense",
+    },
+    {
+      id: "tx004",
+      date: "2025-05-05T19:24:10.000Z",
+      amount: 42.50,
+      category: "Restaurantes",
+      description: "Cena con amigos - La Tapería",
+      type: "expense",
+    },
+    {
+      id: "tx005",
+      date: "2025-05-06T08:17:22.000Z",
+      amount: 35.00,
+      category: "Transporte",
+      description: "Gasolina",
+      type: "expense",
+    },
+    {
+      id: "tx006",
+      date: "2025-05-07T14:32:05.000Z",
+      amount: 14.99,
       category: "Subscripciones",
       description: "Netflix",
+      type: "expense",
+    },
+    {
+      id: "tx007",
+      date: "2025-05-08T16:45:11.000Z",
+      amount: 9.99,
+      category: "Subscripciones",
+      description: "Spotify",
+      type: "expense",
+    },
+    {
+      id: "tx008",
+      date: "2025-05-09T11:26:47.000Z",
+      amount: 67.85,
+      category: "Alimentos",
+      description: "Carrefour",
+      type: "expense",
+    },
+    {
+      id: "tx009",
+      date: "2025-04-28T09:10:23.000Z",
+      amount: 2780.45,
+      category: "Salario",
+      description: "Salario mensual Abril",
+      type: "income",
+    },
+    {
+      id: "tx010",
+      date: "2025-04-29T13:42:50.000Z",
+      amount: 82.30,
+      category: "Compras",
+      description: "Zara - ropa",
+      type: "expense",
+    },
+    {
+      id: "tx011",
+      date: "2025-04-30T10:15:32.000Z",
+      amount: 150.00,
+      category: "Utiles",
+      description: "Reparación ordenador",
+      type: "expense",
+    },
+    {
+      id: "tx012",
+      date: "2025-04-15T18:23:41.000Z",
+      amount: 320.00,
+      category: "Salario",
+      description: "Proyecto freelance",
+      type: "income",
+    },
+    {
+      id: "tx013",
+      date: "2025-04-10T11:33:27.000Z",
+      amount: 64.99,
+      category: "Entretenimiento",
+      description: "Entradas concierto",
+      type: "expense",
+    },
+    {
+      id: "tx014",
+      date: "2025-04-05T08:45:12.000Z",
+      amount: 24.50,
+      category: "Restaurantes",
+      description: "Almuerzo - El Tenedor",
+      type: "expense",
+    },
+    {
+      id: "tx015",
+      date: "2025-04-02T17:22:38.000Z",
+      amount: 950.00,
+      category: "Alquiler",
+      description: "Alquiler Abril",
       type: "expense",
     },
   ],
   budgets: [
     {
-      id: "1",
+      id: "bdg01",
       category: "Alimentos",
       amount: 400,
-      spent: 45.99,
+      spent: 157.80,
       period: "monthly",
     },
     {
-      id: "2",
+      id: "bdg02",
       category: "Entretenimiento",
-      amount: 100,
-      spent: 9.99,
+      amount: 150,
+      spent: 64.99,
       period: "monthly",
     },
     {
-      id: "3",
+      id: "bdg03",
       category: "Transporte",
+      amount: 120,
+      spent: 35.00,
+      period: "monthly",
+    },
+    {
+      id: "bdg04",
+      category: "Restaurantes",
+      amount: 200,
+      spent: 67.00,
+      period: "monthly",
+    },
+    {
+      id: "bdg05",
+      category: "Subscripciones",
+      amount: 50,
+      spent: 24.98,
+      period: "monthly",
+    },
+    {
+      id: "bdg06",
+      category: "Alquiler",
+      amount: 950,
+      spent: 950,
+      period: "monthly",
+    },
+    {
+      id: "bdg07",
+      category: "Compras",
       amount: 150,
-      spent: 0,
+      spent: 82.30,
+      period: "monthly",
+    },
+    {
+      id: "bdg08",
+      category: "Utiles",
+      amount: 200,
+      spent: 150,
       period: "monthly",
     },
   ],
   categories: [
-    { id: "1", name: "Salario", color: "#4CAF50" },
-    { id: "2", name: "Alimentos", color: "#2196F3" },
-    { id: "3", name: "Entretenimiento", color: "#9C27B0" },
-    { id: "4", name: "Transporte", color: "#FF9800" },
-    { id: "5", name: "Subscripciones", color: "#F44336" },
-    { id: "6", name: "Restaurantes", color: "#795548" },
-    { id: "7", name: "Compras", color: "#E91E63" },
-    { id: "8", name: "Utiles", color: "#607D8B" },
+    { id: "cat01", name: "Salario", color: "#4CAF50" },
+    { id: "cat02", name: "Alimentos", color: "#2196F3" },
+    { id: "cat03", name: "Entretenimiento", color: "#9C27B0" },
+    { id: "cat04", name: "Transporte", color: "#FF9800" },
+    { id: "cat05", name: "Subscripciones", color: "#F44336" },
+    { id: "cat06", name: "Restaurantes", color: "#795548" },
+    { id: "cat07", name: "Compras", color: "#E91E63" },
+    { id: "cat08", name: "Utiles", color: "#607D8B" },
+    { id: "cat09", name: "Alquiler", color: "#009688" },
+    { id: "cat10", name: "Salud", color: "#3F51B5" },
+    { id: "cat11", name: "Educación", color: "#FFEB3B" },
+    { id: "cat12", name: "Regalos", color: "#8BC34A" },
   ],
   settings: {
     currency: "EUR",
@@ -109,7 +242,8 @@ const defaultData: FinanceData = {
   },
 }
 
-// Create context
+const DataContext = createContext<DataContextType | undefined>(undefined)
+
 type DataContextType = {
   data: FinanceData
   addTransaction: (transaction: Omit<Transaction, "id">) => void
@@ -125,15 +259,11 @@ type DataContextType = {
   resetData: () => void
 }
 
-const DataContext = createContext<DataContextType | undefined>(undefined)
-
 export function DataProvider({ children }: { children: React.ReactNode }) {
-  // Use a ref to store the data to avoid unnecessary re-renders
   const dataRef = useRef<FinanceData>(defaultData)
   const [data, setData] = useState<FinanceData>(dataRef.current)
   const initialLoadDone = useRef(false)
 
-  // Load data from localStorage only once on mount
   useEffect(() => {
     if (initialLoadDone.current) return
 
@@ -141,7 +271,6 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       const savedData = localStorage.getItem("financeData")
       if (savedData) {
         const parsedData = JSON.parse(savedData)
-        // Ensure all required fields exist
         const validData = {
           ...defaultData,
           ...parsedData,
@@ -160,11 +289,9 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     initialLoadDone.current = true
   }, [])
 
-  // Save data to localStorage when it changes, but not on initial render
   useEffect(() => {
     if (!initialLoadDone.current) return
 
-    // Only save if data has actually changed from the ref
     if (data !== dataRef.current) {
       dataRef.current = data
       try {
@@ -175,10 +302,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     }
   }, [data])
 
-  // Helper function to generate a unique ID
-  const generateId = () => Math.random().toString(36).substring(2, 9)
+  const generateId = () => `${Date.now().toString(36)}${Math.random().toString(36).substring(2, 5)}`
 
-  // CRUD operations for transactions
   const addTransaction = (transaction: Omit<Transaction, "id">) => {
     const newTransaction = { ...transaction, id: generateId() }
     setData((prev) => ({
@@ -201,7 +326,6 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     }))
   }
 
-  // CRUD operations for budgets
   const addBudget = (budget: Omit<Budget, "id">) => {
     const newBudget = { ...budget, id: generateId() }
     setData((prev) => ({
@@ -224,7 +348,6 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     }))
   }
 
-  // CRUD operations for categories
   const addCategory = (category: Omit<Category, "id">) => {
     const newCategory = { ...category, id: generateId() }
     setData((prev) => ({
@@ -247,7 +370,6 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     }))
   }
 
-  // Update settings
   const updateSettings = (settings: Settings) => {
     setData((prev) => ({
       ...prev,
@@ -255,12 +377,10 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     }))
   }
 
-  // Reset data to defaults
   const resetData = () => {
     setData(defaultData)
   }
 
-  // Create a stable context value to prevent unnecessary re-renders
   const contextValue = {
     data,
     addTransaction,
@@ -279,7 +399,6 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   return <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
 }
 
-// Custom hook to use the data context
 export function useFinanceData() {
   const context = useContext(DataContext)
   if (context === undefined) {
