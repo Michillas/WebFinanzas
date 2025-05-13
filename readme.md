@@ -16,6 +16,10 @@ Requisitos:
  - JDK 21
  - MySQL
 
+Variables de entorno (frontend):
+ - OPENAI_API_KEY
+ - NEXT_PUBLIC_API_URL
+
 > 
 > ## 1. Clona el repositorio
 > ```bash
@@ -53,6 +57,10 @@ Requisitos:
 Requisitos:
  - Docker
  - Minikube
+
+Variables de entorno (frontend):
+ - OPENAI_API_KEY
+ - NEXT_PUBLIC_API_URL
 
 > ## 1. Compilar imágenes localmente
 > ```bash
