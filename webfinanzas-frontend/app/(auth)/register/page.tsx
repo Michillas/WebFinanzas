@@ -12,11 +12,14 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [country] = useState("Spain") // Hardcoded
+  const [country] = useState("Spain") // 
+  const [message, setMessage] = useState("")
+  const [messageType, setMessageType] = useState<"error" | "success" | "">("")
 
   const handleRegister = async () => {
     if (password !== confirmPassword) {
-      alert("Las contraseñas no coinciden")
+      setMessage("Las contraseñas no coinciden")
+      setMessageType("error")
       return
     }
 
@@ -27,10 +30,12 @@ export default function RegisterPage() {
     })
 
     if (response.ok) {
-      alert("¡Registro exitoso!")
+      setMessage("¡Registro exitoso!")
+      setMessageType("success")
     } else {
       const data = await response.json()
-      alert(`Error: ${data.message || "No se pudo registrar"}`)
+      setMessage(`Error: ${data.message || "No se pudo registrar"}`)
+      setMessageType("error")
     }
   }
 
@@ -86,7 +91,12 @@ export default function RegisterPage() {
             </label>
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col space-y-2">
+          {message && (
+            <p className={`text-sm ${messageType === "error" ? "text-red-500" : "text-green-500"}`}>
+              {message}
+            </p>
+          )}
           <Button className="w-full" onClick={handleRegister}>Registrarse</Button>
         </CardFooter>
       </Card>
