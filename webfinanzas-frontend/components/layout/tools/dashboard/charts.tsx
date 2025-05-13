@@ -199,7 +199,7 @@ export function BarChart({ data }: any) {
                 formatter={(value) => formatValue(value)}
                 contentStyle={{ backgroundColor: theme === "dark" ? "#1f2937" : "#ffffff", borderColor: theme === "dark" ? "#374151" : "#e5e7eb" }}
               />
-              <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="value" name="Gasto" radius={[4, 4, 0, 0]}>
                 {processedData.map((entry: any, index: any) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
