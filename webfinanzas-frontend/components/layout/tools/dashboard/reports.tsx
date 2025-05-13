@@ -198,27 +198,15 @@ export default function Reports() {
           <CardHeader className="space-y-0 pb-2">
             <div className="flex justify-between items-center">
               <CardTitle>Gastos por Categoría</CardTitle>
-              <Tabs value="pie" className="w-[120px]">
-                <TabsList className="h-8">
-                  <TabsTrigger value="pie" className="text-xs px-2">Pastel</TabsTrigger>
-                  <TabsTrigger value="donut" className="text-xs px-2">Anillo</TabsTrigger>
-                </TabsList>
-              </Tabs>
             </div>
             <CardDescription>Cómo se distribuyen tus gastos</CardDescription>
           </CardHeader>
           <CardContent className="pt-2">
-            {pieChartData.length > 0 ? (
-              <DonutChart 
-                data={pieChartData} 
-                title="" 
-                description="" 
-              />
-            ) : (
-              <div className="flex h-[300px] items-center justify-center text-muted-foreground">
-                No hay datos de gastos disponibles para este período
-              </div>
-            )}
+            <DonutChart 
+              data={pieChartData} 
+              title="" 
+              description="" 
+            />
           </CardContent>
         </Card>
 
@@ -226,35 +214,11 @@ export default function Reports() {
           <CardHeader className="space-y-0 pb-2">
             <div className="flex justify-between items-center">
               <CardTitle>Ingresos vs Gastos</CardTitle>
-              <Tabs 
-                value={chartType} 
-                onValueChange={(value) => setChartType(value as "line" | "area")} 
-                className="w-[120px]"
-              >
-                <TabsList className="h-8">
-                  <TabsTrigger value="line" className="text-xs px-2">Línea</TabsTrigger>
-                  <TabsTrigger value="area" className="text-xs px-2">Área</TabsTrigger>
-                </TabsList>
-              </Tabs>
             </div>
             <CardDescription>Comparación a lo largo del tiempo</CardDescription>
           </CardHeader>
           <CardContent className="pt-2">
-            {lineChartData.length > 0 ? (
-              chartType === "line" ? (
-                <LineChart data={lineChartData} />
-              ) : (
-                <AreaChart 
-                  data={lineChartData} 
-                  title="" 
-                  description="" 
-                />
-              )
-            ) : (
-              <div className="flex h-[300px] items-center justify-center text-muted-foreground">
-                No hay datos de transacciones disponibles para este período
-              </div>
-            )}
+            <LineChart data={lineChartData} />
           </CardContent>
         </Card>
       </div>

@@ -105,7 +105,7 @@ export function LineChart({ data }: any) {
 
   return (
     <Card className="w-full">
-      <CardContent>
+      <CardContent className="pt-6">
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
             <ReChartsLine
