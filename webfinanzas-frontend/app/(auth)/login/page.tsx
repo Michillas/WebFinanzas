@@ -10,8 +10,10 @@ import { User, Lock } from "lucide-react"
 export default function LoginPage() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
 
     const handleLogin = async () => {
+        setError("")
         const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -20,12 +22,11 @@ export default function LoginPage() {
 
         if (response.ok) {
             const data = await response.json()
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("username", username);
-            window.location.href = '/'
+            localStorage.setItem("token", data.token)
+            localStorage.setItem("username", username)
+            window.location.href = "/"
         } else {
-            const errorData = await response.json()
-            alert(`Error: ${errorData.message || "No se pudo iniciar sesión"}`)
+            setError("No se pudo iniciar sesión. Verifica tus credenciales.")
         }
     }
 
@@ -37,6 +38,7 @@ export default function LoginPage() {
                     <CardDescription>Introduce tu usuario y contraseña para acceder a tu cuenta</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
+                    {error && <p className="text-red-500 text-sm">{error}</p>}
                     <div className="space-y-2">
                         <Label htmlFor="name">Nombre de usuario</Label>
                         <div className="relative">
