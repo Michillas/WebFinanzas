@@ -26,6 +26,13 @@ spec:
               value: "3000"
             - name: HOSTNAME 
               value: "0.0.0.0"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
           readinessProbe:
             httpGet:
               path: /

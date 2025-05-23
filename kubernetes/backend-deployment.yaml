@@ -24,7 +24,7 @@ spec:
             - name: SPRING_DATASOURCE_USERNAME
               value: "root"
             - name: SPRING_DATASOURCE_PASSWORD
-              value: "password"  # In production, use a Kubernetes Secret
+              value: "password"  # Kubernetes Secret (In Production)
             - name: SPRING_JPA_DATABASE_PLATFORM
               value: "org.hibernate.dialect.MySQL8Dialect"
           readinessProbe:
@@ -39,8 +39,6 @@ spec:
             requests:
               memory: "256Mi"
               cpu: "250m"
-          # Optional: Add an init container to wait for MySQL
-          # This ensures backend only starts after MySQL is ready
       initContainers:
         - name: wait-for-mysql
           image: busybox

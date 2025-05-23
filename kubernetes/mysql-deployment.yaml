@@ -39,7 +39,7 @@ spec:
             - --default-authentication-plugin=mysql_native_password
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "password"  # In production, use a Kubernetes Secret
+              value: "password"  # Kubernetes Secret (In Production)
             - name: MYSQL_DATABASE
               value: "webfinanzas"
           ports:
@@ -49,12 +49,12 @@ spec:
               mountPath: /var/lib/mysql
             - name: mysql-init-config
               mountPath: /docker-entrypoint-initdb.d
-          readinessProbe:  # Add readiness probe
+          readinessProbe:
             tcpSocket:
               port: 3306
             initialDelaySeconds: 15
             periodSeconds: 10
-          livenessProbe:  # Add liveness probe
+          livenessProbe:
             tcpSocket:
               port: 3306
             initialDelaySeconds: 30
