@@ -108,7 +108,7 @@ export const FooterSection = () => {
               href="https://github.com/Michillas"
               className="text-primary transition-all border-primary hover:border-b-2 ml-1"
             >
-              Michillas
+            Michillas
             </Link>
           </h3>
         </section>

@@ -9,7 +9,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
-// Datos de ejemplo para los activos
 const assets = [
   {
     id: 1,
@@ -127,7 +126,6 @@ export function AssetList({ searchTerm, activeTab }: AssetListProps) {
   const [sortDirection, setSortDirection] = useState<SortDirection>(null)
   const [mounted, setMounted] = useState(false)
 
-  // Solucionar problema de hidratación
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -160,12 +158,10 @@ export function AssetList({ searchTerm, activeTab }: AssetListProps) {
   }
 
   const filteredAssets = assets.filter((asset) => {
-    // Filtrar por pestaña
     if (activeTab !== "all" && asset.type !== activeTab) {
       return false
     }
 
-    // Filtrar por término de búsqueda
     if (
       searchTerm &&
       !asset.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -198,7 +194,6 @@ export function AssetList({ searchTerm, activeTab }: AssetListProps) {
 
   const sortedAssets = getSortedAssets()
 
-  // Formatear números con comas para decimales (formato español)
   const formatPrice = (price: number) => {
     return price.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
   }

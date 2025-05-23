@@ -30,7 +30,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
-// Mock courses data (replace with actual data fetching)
 const coursesData = [
   {
     id: "1",
@@ -130,7 +129,6 @@ export default function CourseDetail({ course, onBack }: { course: Course; onBac
     video: <BookMarked className="h-4 w-4" />,
   }
 
-  // Calculate total course duration
   const totalDuration = course.lessons.reduce((total, lesson) => total + (lesson.duration || 0), 0)
 
   return (

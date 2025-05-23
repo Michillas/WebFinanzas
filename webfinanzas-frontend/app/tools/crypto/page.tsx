@@ -46,7 +46,6 @@ export default function CryptoPage() {
 
     fetchCryptoData()
 
-    // Refresh data every 60 seconds
     const intervalId = setInterval(fetchCryptoData, 60000)
 
     return () => clearInterval(intervalId)
@@ -286,12 +285,10 @@ function MiniChart({ data, isPositive }: { data: number[]; isPositive: boolean }
     return <div className="h-10 w-full flex items-center justify-center">Sin datos</div>
   }
 
-  // Normalize data for the mini chart
   const minValue = Math.min(...data)
   const maxValue = Math.max(...data)
   const range = maxValue - minValue
 
-  // Create points for SVG polyline
   const points = data
     .map((price: any, index: any) => {
       const x = (index / (data.length - 1)) * 100

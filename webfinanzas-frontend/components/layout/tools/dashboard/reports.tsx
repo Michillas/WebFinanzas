@@ -5,19 +5,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useFinanceData } from "@/components/layout/tools/dashboard/data-provider"
 import { formatCurrency } from "@/lib/utils"
-import { 
-  PieChart, 
-  LineChart, 
-  BarChart, 
-  DonutChart, 
-  AreaChart 
+import {
+  LineChart,
+  BarChart,
+  DonutChart,
 } from "@/components/layout/tools/dashboard/charts"
 import { TrendingUp, TrendingDown, ArrowRight, PiggyBank } from "lucide-react"
 
 export default function Reports() {
   const { data } = useFinanceData()
   const [period, setPeriod] = useState<"week" | "month" | "year">("month")
-  const [chartType, setChartType] = useState<"line" | "area">("line")
 
   const filteredTransactions = useMemo(() => {
     const currentDate = new Date()
@@ -148,7 +145,7 @@ export default function Reports() {
             <div className="text-2xl font-bold text-emerald-500">{formatCurrency(income, data.settings.currency)}</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center">
@@ -161,7 +158,7 @@ export default function Reports() {
             <div className="text-2xl font-bold text-rose-500">{formatCurrency(expenses, data.settings.currency)}</div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center">
@@ -176,7 +173,7 @@ export default function Reports() {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center">
@@ -202,10 +199,10 @@ export default function Reports() {
             <CardDescription>Cómo se distribuyen tus gastos</CardDescription>
           </CardHeader>
           <CardContent className="pt-2">
-            <DonutChart 
-              data={pieChartData} 
-              title="" 
-              description="" 
+            <DonutChart
+              data={pieChartData}
+              title=""
+              description=""
             />
           </CardContent>
         </Card>
