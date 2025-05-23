@@ -27,13 +27,3 @@ public class AuthController {
     }
 
 }
-
-// Petición
-/* 
-{
-  "username": "johndoe",
-  "password": "password123",
-  "email": "John@test",
-  "country": "Spain"
-}
-*/
