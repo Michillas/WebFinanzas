@@ -23,7 +23,7 @@ Variables de entorno (frontend):
 > 
 > ## 1. Clona el repositorio
 > ```bash
-> git clone https://github.com/Michillas/WebFinanzas-Cripto-y-IA.git
+> git clone https://github.com/Michillas/WebFinanzas.git
 > ```
 >
 > ## 2. Crea la base de datos en MySQL
@@ -51,7 +51,31 @@ Variables de entorno (frontend):
 > npm run dev
 > # Accede desde http://localhost:5173
 > ```
+
+## Inicia con Docker compose (Recomendado)
+Requisitos:
+ - Docker
+ - Docker compose
+
+Variables de entorno (frontend):
+ - OPENAI_API_KEY
+ - NEXT_PUBLIC_API_URL
+
+> ## 1. Clona el repositorio
+> ```bash
+> git clone https://github.com/Michillas/WebFinanzas.git
+> ```
 >
+> ## 2. Entra en la carpeta
+> ```bash
+> cd WebFinanzas
+> ```
+> 
+> ## 3. Inicia la aplicación
+> ```bash
+> docker compose up
+> ```
+> Accede desde http://localhost:3000
 
 ## Inicia con Kubernetes y Docker
 Requisitos:
