@@ -175,9 +175,7 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter>
             <Button variant="outline" className="w-full" asChild>
-              <TabsTrigger value="budgets">
                 <a>Editar presupuestos</a>
-              </TabsTrigger>
             </Button>
           </CardFooter>
         </Card>
