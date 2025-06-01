@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export const HeroSection = () => {
   const { theme } = useTheme();
@@ -20,7 +21,12 @@ export const HeroSection = () => {
             <span> ¡Pruebalo ahora! </span>
           </Badge>
 
-          <div className="max-w-screen-md mx-auto text-center text-2xl md:text-6xl font-bold">
+          <motion.div 
+            className="max-w-screen-md mx-auto text-center text-2xl md:text-6xl font-bold"
+            initial={{ opacity: 0, y: 0, x: 50 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            transition={{ duration: 1, ease: "linear" }}
+          >
             <h1>
               Tus
               <span className="text-transparent px-2 bg-gradient-to-r from-[#c2ff94] to-primary bg-clip-text">
@@ -28,12 +34,12 @@ export const HeroSection = () => {
               </span>
               cambiarán tu dinero
             </h1>
-          </div>
+          </motion.div>
 
           <p className="max-w-screen-sm mx-auto text-xl text-muted-foreground">
             {`Más que una herramienta, una manera de ver diferente el dinero.`}
           </p>
-
+    
           <div className="space-y-4 md:space-y-0 md:space-x-4">
             <Link href="/register">
               <Button className="w-5/6 md:w-1/4 font-bold group/arrow">
@@ -41,7 +47,7 @@ export const HeroSection = () => {
                 <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
               </Button>
             </Link>
-
+            
             <Button
               asChild
               variant="secondary"
@@ -52,22 +58,27 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <div className="relative group mt-14">
-          <div className="absolute top-2 lg:-top-8 left-1/2 transform -translate-x-1/2 w-[90%] mx-auto h-24 lg:h-80 bg-primary/50 rounded-full blur-3xl"></div>
-          <Image
-            width={1200}
-            height={1200}
-            className="w-full md:w-[1200px] mx-auto rounded-lg relative rouded-lg leading-none flex items-center border border-t-2 border-secondary  border-t-primary/30"
-            src={
-              theme === "light"
-                ? "/hero-image-light.png"
-                : "/hero-image-dark.png"
-            }
-            alt="dashboard"
-          />
+        <motion.div 
+            className="relative group mt-14"
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: "circOut" }}
+          >
+            <div className="absolute top-2 lg:-top-8 left-1/2 transform -translate-x-1/2 w-[90%] mx-auto h-24 lg:h-80 bg-primary/50 rounded-full blur-3xl"></div>
+            <Image
+              width={1200}
+              height={1200}
+              className="w-full md:w-[1200px] mx-auto rounded-lg relative rouded-lg leading-none flex items-center border border-t-2 border-secondary  border-t-primary/30"
+              src={
+                theme === "light"
+                  ? "/hero-image-light.png"
+                  : "/hero-image-dark.png"
+              }
+              alt="dashboard"
+            />
 
-          <div className="absolute bottom-0 left-0 w-full h-20 md:h-28 bg-gradient-to-b from-background/0 via-background/50 to-background rounded-lg"></div>
-        </div>
+            <div className="absolute bottom-0 left-0 w-full h-20 md:h-28 bg-gradient-to-b from-background/0 via-background/50 to-background rounded-lg"></div>
+        </motion.div>
       </div>
     </section>
   );
