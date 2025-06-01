@@ -8,6 +8,7 @@ import { BookOpen, Clock } from "lucide-react"
 
 interface Course {
   title: string;
+  img: string;
   category: string;
   categoryName: string;
   shortDescription: string;
@@ -28,7 +29,7 @@ export default function CourseCard({ course, onClick }: { course: Course; onClic
       <div className="h-40 relative">
         <div className="absolute inset-0 flex items-center justify-center text-white">
           <img
-            src={`/placeholder.svg?height=160&width=384&text=${course.title}`}
+            src={`/${course.img}?height=160&width=384`}
             alt={course.title}
             className="w-full h-full object-cover opacity-30"
           />

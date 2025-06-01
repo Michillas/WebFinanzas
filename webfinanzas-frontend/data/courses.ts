@@ -2,6 +2,7 @@ export const coursesData = [
   {
     id: 1,
     title: "Fundamentos de Presupuesto Personal",
+    img: "courses/1.jpg",
     shortDescription: "Aprende a crear y mantener un presupuesto efectivo",
     description:
       "Este curso te enseñará los fundamentos para crear un presupuesto personal efectivo que te ayudará a controlar tus finanzas y alcanzar tus metas financieras.",
@@ -112,6 +113,7 @@ export const coursesData = [
   {
     id: 2,
     title: "Estrategias de Ahorro Efectivas",
+    img: "courses/2.jpg",
     shortDescription: "Técnicas prácticas para maximizar tus ahorros",
     description:
       "Descubre estrategias probadas para aumentar tus ahorros sin sacrificar tu calidad de vida. Este curso te enseñará métodos prácticos para ahorrar más dinero cada mes.",
@@ -217,6 +219,7 @@ export const coursesData = [
   {
     id: 3,
     title: "Introducción a la Inversión",
+    img: "courses/3.jpg",
     shortDescription: "Conceptos básicos para comenzar a invertir",
     description:
       "Este curso te introduce al mundo de las inversiones de manera clara y sencilla. Aprenderás los conceptos fundamentales que necesitas conocer antes de comenzar a invertir tu dinero.",
@@ -337,6 +340,7 @@ export const coursesData = [
   {
     id: 4,
     title: "Control de Deudas",
+    img: "courses/4.png",
     shortDescription: "Estrategias para manejar y reducir tus deudas",
     description:
       "Aprende a manejar tus deudas de manera efectiva, reducir intereses y crear un plan para liberarte de deudas problemáticas. Este curso te dará herramientas prácticas para tomar control de tu situación financiera.",
@@ -442,6 +446,7 @@ export const coursesData = [
   {
     id: 5,
     title: "Finanzas para Emprendedores",
+    img: "courses/5.png",
     shortDescription: "Gestión financiera para pequeños negocios",
     description:
       "Este curso está diseñado para emprendedores y dueños de pequeños negocios que quieren mejorar la gestión financiera de sus empresas. Aprenderás conceptos esenciales de contabilidad, flujo de caja y planificación financiera.",
@@ -552,6 +557,7 @@ export const coursesData = [
   {
     id: 6,
     title: "Planificación para la Jubilación",
+    img: "courses/6.png",
     shortDescription: "Prepárate financieramente para tu retiro",
     description:
       "Este curso te guiará en la creación de un plan sólido para tu jubilación. Aprenderás a calcular cuánto necesitas ahorrar, qué vehículos de inversión utilizar y cómo maximizar tus ahorros para el retiro.",
