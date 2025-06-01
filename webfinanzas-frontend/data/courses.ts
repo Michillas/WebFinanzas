@@ -340,7 +340,7 @@ export const coursesData = [
   {
     id: 4,
     title: "Control de Deudas",
-    img: "courses/4.png",
+    img: "courses/4.jpg",
     shortDescription: "Estrategias para manejar y reducir tus deudas",
     description:
       "Aprende a manejar tus deudas de manera efectiva, reducir intereses y crear un plan para liberarte de deudas problemáticas. Este curso te dará herramientas prácticas para tomar control de tu situación financiera.",
@@ -446,7 +446,7 @@ export const coursesData = [
   {
     id: 5,
     title: "Finanzas para Emprendedores",
-    img: "courses/5.png",
+    img: "courses/5.jpg",
     shortDescription: "Gestión financiera para pequeños negocios",
     description:
       "Este curso está diseñado para emprendedores y dueños de pequeños negocios que quieren mejorar la gestión financiera de sus empresas. Aprenderás conceptos esenciales de contabilidad, flujo de caja y planificación financiera.",
