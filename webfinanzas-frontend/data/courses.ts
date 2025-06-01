@@ -557,7 +557,7 @@ export const coursesData = [
   {
     id: 6,
     title: "Planificación para la Jubilación",
-    img: "courses/6.png",
+    img: "courses/6.jpg",
     shortDescription: "Prepárate financieramente para tu retiro",
     description:
       "Este curso te guiará en la creación de un plan sólido para tu jubilación. Aprenderás a calcular cuánto necesitas ahorrar, qué vehículos de inversión utilizar y cómo maximizar tus ahorros para el retiro.",
