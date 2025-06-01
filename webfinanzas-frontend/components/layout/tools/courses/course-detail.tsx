@@ -366,12 +366,12 @@ export default function CourseDetail({ course, onBack }: { course: Course; onBac
                   <p>{activeLesson.content}</p>
 
                   {activeLesson.interactive && (
-                    <div className="mt-6 p-4 border rounded-lg bg-emerald-50">
+                    <div className="mt-6 p-4 border rounded-lg">
                       <h3 className="text-lg font-medium text-emerald-800 mb-2">Actividad Interactiva</h3>
                       <p>{activeLesson.interactive}</p>
 
                       {activeLesson.calculatorType && (
-                        <div className="mt-4 p-4 bg-white rounded-lg border">
+                        <div className="mt-4 p-4 rounded-lg border">
                           <h4 className="font-medium mb-2">Calculadora de {activeLesson.calculatorType}</h4>
                           <div className="grid grid-cols-2 gap-4 mb-4">
                             <div>
@@ -436,7 +436,7 @@ export default function CourseDetail({ course, onBack }: { course: Course; onBac
               <Accordion type="single" collapsible className="w-full">
                 {course.lessons.map((lesson: any, index: any) => (
                   <AccordionItem key={lesson.id} value={`lesson-${lesson.id}`}>
-                    <AccordionTrigger className="hover:bg-emerald-50 px-4 rounded-lg">
+                    <AccordionTrigger className="px-4 rounded-lg">
                       <div className="flex items-center gap-3 text-left">
                         <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
                           {completedLessons.includes(lesson.id) ? (
