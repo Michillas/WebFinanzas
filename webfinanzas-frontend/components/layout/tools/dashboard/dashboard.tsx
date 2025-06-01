@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress"
 import { useFinanceData } from "@/components/layout/tools/dashboard/data-provider"
 import { AddTransactionDialog } from "@/components/layout/tools/dashboard/add-transaction-dialog"
 import { formatCurrency } from "@/lib/utils"
+import { TabsTrigger } from "@radix-ui/react-tabs"
 
 export default function Dashboard() {
   const { data } = useFinanceData()
@@ -174,7 +175,9 @@ export default function Dashboard() {
           </CardContent>
           <CardFooter>
             <Button variant="outline" className="w-full" asChild>
-              <a href="#budgets">Editar presupuestos</a>
+              <TabsTrigger value="budgets">
+                <a>Editar presupuestos</a>
+              </TabsTrigger>
             </Button>
           </CardFooter>
         </Card>
