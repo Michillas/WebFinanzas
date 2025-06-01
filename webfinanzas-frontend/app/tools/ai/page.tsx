@@ -140,8 +140,8 @@ export default function AiPage() {
 
   return (
     <main className="flex flex-col bg-gradient-to-b p-4">
-      <div className="flex-1 flex p-4 overflow-hidden">
-        <div className="flex flex-1 max-w-[calc(100%-18rem)] md:max-w-[calc(100%-20rem)]">
+      <div className="flex-1 flex-wrap md:flex p-4 overflow-hidden">
+        <div className="flex flex-1 max-w-[calc(100%)] md:max-w-[calc(100%-20rem)]">
           <div className="flex-1 flex items-start justify-center">
             <div className="w-full h-full flex flex-col rounded-lg border border-gray-800 bg-gray-900/30 backdrop-blur-sm overflow-hidden">
               <div
@@ -304,7 +304,7 @@ export default function AiPage() {
           </div>
         </div>
 
-        <div className="w-72 ml-1 flex-shrink-0">
+        <div className="w-72 ml-3 mt-4 md:mt-0 md:ml-1 flex-shrink-0">
           <div className="sticky top-4">
             <Collapsible
               open={true}
