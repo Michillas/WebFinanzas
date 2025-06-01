@@ -1,7 +1,7 @@
 export const coursesData = [
   {
     id: 1,
-    title: "Fundamentos de Presupuesto Personal",
+    title: "Fundamentos de Presupuesto",
     img: "courses/1.jpg",
     shortDescription: "Aprende a crear y mantener un presupuesto efectivo",
     description:
