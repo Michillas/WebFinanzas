@@ -27,6 +27,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { financialPrompts } from "@/lib/financial-prompts";
 
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default function AiPage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -187,6 +188,7 @@ export default function AiPage() {
                     >
                       {message.role === "assistant" ? (
                           <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
                             components={{
                               h1: ({ node, ...props }) => <h1 className="text-2xl font-bold mt-4 mb-2" {...props} />,
                               h2: ({ node, ...props }) => <h2 className="text-xl font-semibold mt-4 mb-2" {...props} />,
