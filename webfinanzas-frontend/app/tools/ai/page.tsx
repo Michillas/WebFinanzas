@@ -54,7 +54,7 @@ export default function AiPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "deepseek/deepseek-chat-v3-0324:free",
+        model: "deepseek/deepseek-r1-0528-qwen3-8b:free",
         messages,
       }),
     });
