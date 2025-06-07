@@ -47,7 +47,7 @@ export default function AiPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  const openai = async (messages: { role: "user" | "assistant"; content: string }[]) => {
+  const openai = async (messages: { role: "user" | "assistant" | "system"; content: string }[]) => {
     const response = await fetch("/api/ai", {
       method: "POST",
       headers: {
@@ -83,7 +83,8 @@ export default function AiPage() {
     setError(null);
   
     try {
-      const updatedMessages: { role: "user" | "assistant"; content: string }[] = [
+      const updatedMessages: { role: "user" | "assistant" | "system"; content: string }[] = [
+        { role: "system", content: "You are a helpful financial assistant. Always answer in Spanish and be concise. Use markdown language." },
         ...messages.map(({ id, ...rest }) => rest),
         { role: "user", content: input },
       ];
