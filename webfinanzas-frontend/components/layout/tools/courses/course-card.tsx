@@ -32,6 +32,7 @@ export default function CourseCard({ course, onClick }: { course: Course; onClic
             src={`/${course.img}?height=160&width=384`}
             alt={course.title}
             className="w-full h-full object-cover opacity-30"
+            loading="lazy"
           />
           <div className="absolute top-4 left-4">
             <Badge className={`${categoryColors[course.category] || "bg-gray-100 text-gray-800"}`}>
