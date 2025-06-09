@@ -44,6 +44,7 @@ export default function AiPage() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -119,8 +120,12 @@ export default function AiPage() {
   };
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    if (!isInitialLoad) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      setIsInitialLoad(false);
+    }
+  }, [messages, isInitialLoad]);
 
   const handleScroll = () => {
     if (!chatContainerRef.current) return;
