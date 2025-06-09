@@ -27,6 +27,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authRequest ->
                         authRequest
                                 .requestMatchers("/auth/**").permitAll()
+                                // API docs
+                                .requestMatchers("/v3/**").permitAll()
+                                .requestMatchers("/v3/api-docs/**").permitAll()
+                                .requestMatchers("/v3/api-docs").permitAll()
+                                .requestMatchers("/v1/api/get-token").permitAll()
+                                // Swagger UI
+                                .requestMatchers("/swagger-ui/**").permitAll()
+                                .requestMatchers("/swagger-ui.html").permitAll()
+                                .requestMatchers("/swagger-resources/**").permitAll()
+                                .requestMatchers("/webjars/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(sessionManager ->
