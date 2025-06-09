@@ -120,13 +120,6 @@ export default function AiPage() {
     }
   };
 
-  useEffect(() => {
-    if (messages.length > prevMessageCount) {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-    setPrevMessageCount(messages.length);
-  }, [messages, prevMessageCount]);
-
   const handleScroll = () => {
     if (!chatContainerRef.current) return;
     const { scrollTop, scrollHeight, clientHeight } = chatContainerRef.current;
@@ -147,8 +140,8 @@ export default function AiPage() {
 
   return (
     <main className="flex flex-col bg-gradient-to-b p-4">
-      <div className="flex-1 flex-wrap md:flex p-4 overflow-hidden">
-        <div className="flex flex-1 max-w-[calc(100%)] md:max-w-[calc(100%-20rem)]">
+      <div className="flex-1 flex flex-col md:flex-row p-4 overflow-hidden">
+        <div className="flex flex-1 max-w-full md:max-w-[calc(100%-20rem)]">
           <div className="flex-1 flex items-start justify-center">
             <div className="w-full h-full flex flex-col rounded-lg border border-gray-800 bg-gray-900/30 backdrop-blur-sm overflow-hidden">
               <div
@@ -312,8 +305,8 @@ export default function AiPage() {
           </div>
         </div>
 
-        <div className="w-72 ml-3 mt-4 md:mt-0 md:ml-1 flex-shrink-0">
-          <div className="sticky top-4">
+        <div className="w-full md:w-72 mt-4 md:ml-3 md:mt-0 flex-shrink-0 flex justify-center md:justify-start">
+          <div className="max-w-sm md:w-full md:sticky md:top-4">
             <Collapsible
               open={true}
               className="bg-gray-900/50 rounded-lg border border-gray-800 overflow-hidden"
