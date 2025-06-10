@@ -301,8 +301,8 @@ export default function AiPage() {
           </div>
         </div>
 
-        <div className="w-full md:w-72 mt-4 md:mt-0 flex-shrink-0">
-          <div className="max-w-sm md:w-full md:sticky md:top-4">
+        <div className="w-full md:w-72 mt-4 md:mt-0 flex-shrink-0 flex justify-center md:justify-start">
+          <div className="max-w-sm w-full md:w-full md:sticky md:top-4">
             <Collapsible
               open={true}
               className="bg-gray-900/50 rounded-lg border border-gray-800 overflow-hidden"
@@ -316,7 +316,7 @@ export default function AiPage() {
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent>
-                <ScrollArea className="h-[calc(100vh-220px)] p-3">
+                <ScrollArea className="h-[calc(88vh-180px)] p-3">
                   <div className="space-y-4">
                     {Object.entries(financialPrompts).map(
                       ([category, prompts]) => (
