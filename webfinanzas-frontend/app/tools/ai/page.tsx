@@ -316,7 +316,7 @@ export default function AiPage() {
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent>
-                <ScrollArea className="h-[calc(75vh-180px)] p-3">
+                <ScrollArea className="h-[calc(100vh-220px)] p-3">
                   <div className="space-y-4">
                     {Object.entries(financialPrompts).map(
                       ([category, prompts]) => (
